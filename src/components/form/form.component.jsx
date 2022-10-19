@@ -1,31 +1,34 @@
-import { useState } from 'react';
-import './form.css'
+import { useState } from "react";
+import "./form.css";
+const arr = ["Shadi", "Noor", "Ahmed", " Khaled", "Raed", "Leen"];
 const Form = (props) => {
-  const [title, setTitle] = useState('Go Swim');
-  const [category, setCategory] = useState('');
+  const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("");
   const [isUrgent, setIsUrgent] = useState(false);
+
+  const [name, setName] = useState(arr);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const newItem = {
       title: event.target.title.value,
       category: event.target.category.value,
-      urgent: event.target.urgent.checked
-    }
+      urgent: event.target.urgent.checked,
+    };
 
-    console.log(newItem);
+    props.onAddItems(newItem);
 
     setTitle("");
     setCategory("");
     setIsUrgent(false);
-  }
+  };
 
   const onTitleChange = (event) => {
     let title = event.target.value;
     title = title.replace(".", "-");
     title = title.replace(" ", "-");
     setTitle(title);
-  }
+  };
 
   return (
     <div className="form">
@@ -43,7 +46,9 @@ const Form = (props) => {
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         >
-          <option value="" disabled>Select</option>
+          <option value="" disabled>
+            Select
+          </option>
           <option value="work">Work</option>
           <option value="home">Home</option>
           <option value="personal">Personal</option>
@@ -58,8 +63,19 @@ const Form = (props) => {
         <div className="separator" />
         <input type="submit" value="Add to List" />
       </form>
+      {/* <div>
+        <ul>
+          {name.map((item, index) => {
+            return (
+              <li key={index}>
+                {item} - {item.toLocaleUpperCase()}
+              </li>
+            );
+          })}
+        </ul>
+      </div> */}
     </div>
-  )
+  );
 };
 
 export default Form;
