@@ -13,7 +13,7 @@ const Form = (props) => {
       urgent: event.target.urgent.checked
     }
 
-    console.log(newItem);
+    props.onAddItem(newItem);
 
     setTitle("");
     setCategory("");
@@ -22,8 +22,8 @@ const Form = (props) => {
 
   const onTitleChange = (event) => {
     let title = event.target.value;
-    title = title.replace(".", "-");
-    title = title.replace(" ", "-");
+    title = title.replace(".", " ");
+    title = title.replace("-", " ");
     setTitle(title);
   }
 
