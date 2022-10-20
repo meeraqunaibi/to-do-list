@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './form.css'
-const Form = (props) => {
-  const [title, setTitle] = useState('Go Swim');
+const Form = ({onAddItem}) => {
+  const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
   const [isUrgent, setIsUrgent] = useState(false);
 
@@ -13,7 +13,7 @@ const Form = (props) => {
       urgent: event.target.urgent.checked
     }
 
-    console.log(newItem);
+    onAddItem(newItem);
 
     setTitle("");
     setCategory("");
@@ -23,7 +23,6 @@ const Form = (props) => {
   const onTitleChange = (event) => {
     let title = event.target.value;
     title = title.replace(".", "-");
-    title = title.replace(" ", "-");
     setTitle(title);
   }
 
@@ -44,9 +43,9 @@ const Form = (props) => {
           onChange={(e) => setCategory(e.target.value)}
         >
           <option value="" disabled>Select</option>
-          <option value="work">Work</option>
-          <option value="home">Home</option>
-          <option value="personal">Personal</option>
+          <option value="Work">Work</option>
+          <option value="Home">Home</option>
+          <option value="Personal">Personal</option>
         </select>
         <input
           name="urgent"

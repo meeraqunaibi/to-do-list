@@ -1,0 +1,9 @@
+ul{
+    list-style-type: none;
+    padding: 2vmin 4vmin;
+}
+ul li{
+    padding: 2vmin 0;
+    box-shadow: 1px 1px 3px rgba(0,0,0, 0.5);
+    margin: 2vmin 0;
+}
