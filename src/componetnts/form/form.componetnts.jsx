@@ -8,16 +8,18 @@ const Form = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(event.target.title.value);
-        /*const newItem={
+        const newItem = {
             title: event.target.title.value,
-            category : event.target.category.value,
+            category: event.target.category.value,
             urgent: event.target.urgent.checked,
-            
+
         }
-        */
+
+        props.onAddFunction(newItem);
         setTitle("");
         setCategoryy("");
         setUrgent(false);
+
     }
 
     const onTitleChange = (event) => {
@@ -30,8 +32,8 @@ const Form = (props) => {
         let Category = "Your Category Is" + event.target[event.target.selectedIndex].text;
         setCategory(Category);
     }
-    const [namee,setName]=useState(["mohammad","nidal","rajbe","ana"]);
-    const arr=["mohammad","nidal","rajbe","ana"];
+    const [namee, setName] = useState(["mohammad", "nidal", "rajbe", "ana"]);
+    const arr = ["mohammad", "nidal", "rajbe", "ana"];
     return (
         <div className='form'>
             <form onSubmit={handleSubmit}>
@@ -47,35 +49,35 @@ const Form = (props) => {
                     name='category' /*onChange={onCategoryChange}*/
                     onChange={(e) => { setCategoryy(e.target.value) }}
                     placeholder='CategoryS'>
-                    <option value="select" disabled></option>
+                    <option value="select" disabled>select</option>
                     <option value="work">Work</option>
                     <option value="home">Home</option>
                     <option value="personal">Personal</option>
                 </select>
                 <div className='chBox'>
-                <input checked={urgent}
-                    onChange={(e) => { setUrgent(e.target.value) }}
-                    type="checkbox"
-                    name='urgent' />
-                <label htmlFor="">Urgent</label>
+                    <input checked={urgent}
+                        onChange={(e) => { setUrgent(e.target.value) }}
+                        type="checkbox"
+                        name='urgent' />
+                    <label htmlFor="">Urgent</label>
                 </div>
                 <input id='submit' type="submit" value='Add To List' />
             </form>
             <h3>{Categoryy}</h3>
             {/* <ul> */}
             {
-              /* namee.map((name,index)=><li>{name}-{name.toUpperCase()-{index}}</li>)
-              arr.map(name=>{
+                /* namee.map((name,index)=><li>{name}-{name.toUpperCase()-{index}}</li>)
+                arr.map(name=>{
+                  
                 
+                <li>{name}-{name.toUpperCase()}</li>
               
-              <li>{name}-{name.toUpperCase()}</li>
-            
-            
-            })
-            */
+              
+              })
+              */
             }
             {/* </ul> */}
-            
+
         </div>
     );
 }
