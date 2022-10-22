@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './form.css'
+import category_items from '../category/catedory'
 const Form = (props) => {
   const [title, setTitle] = useState('Go Swim');
   const [category, setCategory] = useState('');
@@ -8,6 +9,7 @@ const Form = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const newItem = {
+      id: new Date(),
       title: event.target.title.value,
       category: event.target.category.value,
       urgent: event.target.urgent.checked
@@ -44,9 +46,11 @@ const Form = (props) => {
           onChange={(e) => setCategory(e.target.value)}
         >
           <option value="" disabled>Select</option>
-          <option value="work">Work</option>
-          <option value="home">Home</option>
-          <option value="personal">Personal</option>
+          {
+            category_items.map(item => (
+              <option value={item.value} key={item.id}>{item.label}</option>
+            ))
+          }
         </select>
         <input
           name="urgent"
