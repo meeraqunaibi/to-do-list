@@ -1,22 +1,24 @@
-import { useState } from 'react';
+import React, { Component, useState } from 'react';
 import './App.css';
-import Form from './components/form/form.component';
+
 import List from './components/list/list.component';
+import Form from "./components/form/form.component"
 
 function App() {
-  const [items, setItems] = useState([]);
-
+  const [items, setItem] = useState([]);
   const addItem = (item) => {
-    setItems([...items, item]);
+    console.log("add Item", item);
+    setItem([...items, item]);
   }
-
   return (
     <div className="App">
-      <h1>R-ToDOApp</h1>
       <Form onAddItem={addItem} />
       <List items={items} />
     </div>
   );
 }
+
+
+
 
 export default App;
