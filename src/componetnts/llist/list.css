@@ -20,16 +20,15 @@ ol {
 .licenter
 {
     display: flex;
-    
     justify-content: center;
-    align-items:flex-start;
-    justify-items: start;
+    align-items:center;
+    justify-items: center;
     width: 100%;
 }
 ol li {
     display: block;
     position: relative;
-    margin: 5px;
+    margin: 10px;
     width: 80%;
 }
 
@@ -55,3 +54,4 @@ ol li:before {
     border-radius: 2em;
     font-weight: 700;
 }
+
