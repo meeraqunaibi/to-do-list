@@ -1,17 +1,25 @@
 import { useState } from "react";
+
+import Catergories from "../../data/data";
 import "./form.css";
 const Form = (props) => {
   const [title, changetitle] = useState("Run");
   const [category, changecategory] = useState("");
-  const [Urgent, changeUrgent] = useState(false);
+  const [urgent, changeUrgent] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const newItem = {
+      id: new Date(),
       title: event.target.title.value,
       category: event.target.category.value,
       urgent: event.target.urgent.checked,
     };
+
+    if (category === "") {
+      alert("Enter a category");
+      return;
+    }
 
     props.addItem(newItem);
 
@@ -28,7 +36,7 @@ const Form = (props) => {
   };
 
   return (
-    <div>
+    <div className="body">
       <form onSubmit={handleSubmit} className="form">
         <div className="row">
           <label htmlFor="tilte" title="title">
@@ -50,26 +58,27 @@ const Form = (props) => {
             name="category"
             placeholder="Category"
             value={category}
-            onChange={(event) => changecategory(event.target.value )}
+            onChange={(event) => changecategory(event.target.value)}
           >
             <option value="" disabled>
               Select
             </option>
-            <option value="work">Work</option>
-            <option value="home">Home</option>
-            <option value="personal">Personal</option>
+            {Catergories.map((item, index) => (
+              <option key={index} value={item.value}>
+                {item.value}
+              </option>
+            ))}
           </select>
         </div>
         <div className="row">
           <input
             name="urgent"
             type="checkbox"
-            checked={changeUrgent}
+            checked={urgent}
             onChange={(event) => changeUrgent(event.target.checked)}
           />
           <label>Urgent</label>
         </div>
-        
 
         <input className="button row" type="submit" value="Add to List" />
       </form>
