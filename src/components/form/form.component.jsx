@@ -63,17 +63,6 @@ const Form = (props) => {
         <div className="separator" />
         <input type="submit" value="Add to List" />
       </form>
-      {/* <div>
-        <ul>
-          {name.map((item, index) => {
-            return (
-              <li key={index}>
-                {item} - {item.toLocaleUpperCase()}
-              </li>
-            );
-          })}
-        </ul>
-      </div> */}
     </div>
   );
 };

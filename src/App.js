@@ -11,7 +11,7 @@ function App() {
   };
   return (
     <div className="App">
-      <h1>R-ToDOApp</h1>
+      <h1 className="text-2xl my-5">R-ToDOApp</h1>
       <Form onAddItems={HandelAdd} />
       <ListItems items={items} />
     </div>
