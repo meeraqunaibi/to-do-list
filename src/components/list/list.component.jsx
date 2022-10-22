@@ -3,9 +3,10 @@ import './list.css';
 /** 
  * @param {{
  * items: {
- *   title: event.target.title.value,
- *   category: event.target.category.value,
- *   urgent: event.target.urgent.checked
+ *   id: number,
+ *   title: string,
+ *   category: string,
+ *   urgent: string
  * }[]
  * }} props
  */
@@ -14,7 +15,7 @@ const List = (props) => {
     <div className='items-list'>
       <ul>
         {
-          props.items.map((item, index) => <li key={index}>
+          props.items.map((item, index) => <li key={item.id}>
             {item.title} - {item.category} - {item.urgent ? 'URGENT' : 'non urgent'}
           </li>)
         }
