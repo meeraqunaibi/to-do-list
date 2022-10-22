@@ -1,6 +1,5 @@
 import { useState } from "react";
-import "./App.css";
-import Form from "./components/form/form.component";
+import Form from "./components/form/Form";
 import ListItems from "./components/ListItems";
 
 function App() {
@@ -10,8 +9,8 @@ function App() {
     setItems([...items, newItem]);
   };
   return (
-    <div className="App">
-      <h1 className="text-2xl my-5">R-ToDOApp</h1>
+    <div>
+      <h1 className="text-2xl my-7 text-center font-bold">R-ToDOApp</h1>
       <Form onAddItems={HandelAdd} />
       <ListItems items={items} />
     </div>

@@ -1,12 +1,12 @@
 import { useState } from "react";
 import "./form.css";
-const arr = ["Shadi", "Noor", "Ahmed", " Khaled", "Raed", "Leen"];
-const Form = (props) => {
+//const arr = ["Shadi", "Noor", "Ahmed", " Khaled", "Raed", "Leen"];
+const Form = ({ onAddItems }) => {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [isUrgent, setIsUrgent] = useState(false);
 
-  const [name, setName] = useState(arr);
+  //const [name, setName] = useState(arr);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -16,7 +16,7 @@ const Form = (props) => {
       urgent: event.target.urgent.checked,
     };
 
-    props.onAddItems(newItem);
+    onAddItems(newItem);
 
     setTitle("");
     setCategory("");
@@ -32,7 +32,7 @@ const Form = (props) => {
 
   return (
     <div className="form">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="my-2">
         <input
           placeholder="Title"
           name="title"
