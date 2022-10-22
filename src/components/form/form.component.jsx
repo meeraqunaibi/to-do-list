@@ -1,65 +1,50 @@
-import { useState } from 'react';
-import './form.css'
+import { useState } from "react";
+import "./form.css";
 const Form = (props) => {
-  const [title, setTitle] = useState('Go Swim');
-  const [category, setCategory] = useState('');
-  const [isUrgent, setIsUrgent] = useState(false);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const newItem = {
-      title: event.target.title.value,
-      category: event.target.category.value,
-      urgent: event.target.urgent.checked
+    const [title , setTitle]=useState("Do homework");
+    const [ category , setCategory]=useState("");
+    const [urgent , setUrgent]=useState(false);
+    const handelSubmit=(e)=>{
+     e.preventDefault();
+     const newItem = {
+        title : e.target.title.value , 
+        category : e.target.category.value ,
+        urgent : e.target.urgent.checked
+     }
+     props.onAddItem(newItem);
+     setTitle("");
+     setCategory("");
+     setUrgent(false);
     }
-
-    props.onAddItem(newItem);
-
-    setTitle("");
-    setCategory("");
-    setIsUrgent(false);
-  }
-
-  const onTitleChange = (event) => {
-    let title = event.target.value;
-    title = title.replace(".", " ");
-    title = title.replace("-", " ");
-    setTitle(title);
-  }
-
+    const handelTitle=(e)=>{
+        let t = e.target.value ; 
+        t = t.replace (".","-");
+        setTitle(t);
+    }
   return (
-    <div className="form">
-      <form onSubmit={handleSubmit}>
-        <input
-          placeholder="Title"
-          name="title"
-          type="text"
-          value={title}
-          onChange={onTitleChange}
-        />
-        <select
-          name="category"
-          placeholder="Category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        >
-          <option value="" disabled>Select</option>
-          <option value="work">Work</option>
-          <option value="home">Home</option>
-          <option value="personal">Personal</option>
+    <div className="container">
+      <form onSubmit={handelSubmit}>
+        <input 
+        type="text"
+         placeholder="tittle"
+         name="title"
+         value={title}
+         onChange = {handelTitle}
+         />
+        <select name="category" value={category} 
+        onChange={(e)=>setCategory(e.target.value)}>
+        <option  value="select">select</option>
+          <option value="work">work</option>
+          <option value="home">home</option>
+          <option value="personal">personal</option>
         </select>
-        <input
-          name="urgent"
-          type="checkbox"
-          checked={isUrgent}
-          onChange={(e) => setIsUrgent(e.target.checked)}
-        />
-        <label>Urgent</label>
-        <div className="separator" />
-        <input type="submit" value="Add to List" />
+        <input name="urgent" type="checkbox" checked={urgent}
+         onChange={(e)=>setUrgent(e.target.value)}></input>
+        <label className="label">Urgent</label>
+        <input type="submit" value="add to list"/>
       </form>
+      <hr></hr>
     </div>
-  )
+  );
 };
-
 export default Form;

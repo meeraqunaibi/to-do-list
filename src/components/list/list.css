@@ -1,4 +1,6 @@
-.items-list {
-    border-top: 2px solid #e3e3e3;
-    padding: 10px;
+.list {
+    color: black;
+    font-size: 20px;
+    text-shadow: 2px 2px 8px rgb(163, 68, 91);;
+    margin: 27px;
 }

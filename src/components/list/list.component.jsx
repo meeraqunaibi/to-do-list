@@ -1,26 +1,16 @@
-import './list.css';
-
-/** 
- * @param {{
- * items: {
- *   title: event.target.title.value,
- *   category: event.target.category.value,
- *   urgent: event.target.urgent.checked
- * }[]
- * }} props
- */
+import "./list.css";
 const List = (props) => {
   return (
-    <div className='items-list'>
+    <div className="list">
+      The list of items
       <ul>
         {
-          props.items.map((item, index) => <li key={index}>
-            {item.title} - {item.category} - {item.urgent ? 'URGENT' : 'non urgent'}
-          </li>)
+        props.items.map((item , index)=>
+        <li key={index}>{item.title} - {item.category} - {item.urgent? 'urgent' : 'Not urgent'} </li>) //negative of index ??
+
         }
       </ul>
     </div>
-  )
+  );
 };
-
 export default List;
