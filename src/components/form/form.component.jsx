@@ -55,7 +55,10 @@ const Form = (props) => {
           <option value="" disabled>Select</option>
           {
             CATEGORIES_OPTIONS.map(item => (
-              <option value={item.value} key={item.value}>{item.label}</option>
+              <option
+                value={item.value}
+                key={item.value}
+              >{item.label}</option>
             ))
           }
         </select>

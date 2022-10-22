@@ -1,3 +1,34 @@
 .items-list {
     padding: 10px;
 }
+
+.items-list ul {
+    padding: 0;
+    margin: 0;
+}
+
+.items-list .item {
+    list-style-type: none;
+    background-color: #e3e3e3;
+    margin-bottom: 4px;
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-left: 6px solid #a3d31d;
+    border-radius: 5px;
+}
+
+.items-list .item h2 {
+    font-size: 16px;
+    color: #444;
+    margin: 0;
+    margin-bottom: 3px;
+}
+.items-list .item span {
+    font-size: 13px;
+    color: #888;
+}
+.items-list .item.urgent {
+    border-left-color: #f41a1a;
+}
