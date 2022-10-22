@@ -1,16 +1,17 @@
 import React from "react";
 
-const ListItems = ({ items, setItems, input, setInput }) => {
-  const handelDelete = (index) => {
-    setItems([...items.slice(0, index), ...items.slice(index + 1)]);
-  };
-
+const ListItems = ({ items, input, setDeletePoopUp, setIndexOfItem }) => {
   const filterItems = ({ title }) => {
     return title.toLowerCase().includes(input.toLowerCase());
   };
 
+  const HandelDelete = (index) => {
+    setDeletePoopUp(true);
+    setIndexOfItem(index);
+  };
+
   return (
-    <div className="flex items-center justify-center my-5">
+    <div className="flex items-center justify-center py-5">
       <div className=" flex items-start flex-col w-9/12">
         <ul className="w-full">
           {input
@@ -25,10 +26,7 @@ const ListItems = ({ items, setItems, input, setInput }) => {
                     {item.title}
                     <h2 className="text-gray-200 text-base">{item.category}</h2>
                   </div>
-                  <button
-                    className=" hover:animate-spin"
-                    onClick={() => handelDelete(index)}
-                  >
+                  <button className=" " onClick={() => HandelDelete(index)}>
                     🗑️
                   </button>
                 </li>
@@ -48,10 +46,7 @@ const ListItems = ({ items, setItems, input, setInput }) => {
                         {item.category}
                       </h2>
                     </div>
-                    <button
-                      className=" hover:animate-spin"
-                      onClick={() => handelDelete(index)}
-                    >
+                    <button className=" " onClick={() => HandelDelete(index)}>
                       🗑️
                     </button>
                   </li>
@@ -71,10 +66,7 @@ const ListItems = ({ items, setItems, input, setInput }) => {
                     {item.title}
                     <h2 className="text-gray-200 text-base">{item.category}</h2>
                   </div>
-                  <button
-                    className=" hover:animate-spin"
-                    onClick={() => handelDelete(index)}
-                  >
+                  <button className=" " onClick={() => HandelDelete(index)}>
                     🗑️
                   </button>
                 </li>

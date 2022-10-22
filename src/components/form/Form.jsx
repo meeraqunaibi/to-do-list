@@ -37,6 +37,7 @@ const Form = ({ onAddItems, input, setInput }) => {
       <form onSubmit={handleSubmit} className="my-2">
         <input
           placeholder="Title"
+          className="cursor-pointer"
           name="title"
           type="text"
           value={title}
@@ -44,6 +45,7 @@ const Form = ({ onAddItems, input, setInput }) => {
         />
         <select
           name="category"
+          className="cursor-pointer"
           placeholder="Category"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
@@ -58,20 +60,25 @@ const Form = ({ onAddItems, input, setInput }) => {
           ))}
         </select>
         <input
+          className="cursor-pointer"
           name="urgent"
           type="checkbox"
           checked={isUrgent}
           onChange={(e) => setIsUrgent(e.target.checked)}
         />
-        <label>Urgent</label>
+        <label className="text-white">Urgent</label>
         <div className="separator" />
-        <input type="submit" value="Add to List" />
+        <input
+          type="submit"
+          className="hover:bg-slate-400 duration-200"
+          value="Add to List"
+        />
       </form>
       <div className="flex items-center justify-center">
         <input
           type="text"
           placeholder="search..."
-          className="m-2 p-3 rounded-xl outline-double w-64"
+          className="m-2 p-3 rounded-xl w-64"
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
