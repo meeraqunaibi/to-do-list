@@ -10,7 +10,8 @@ const Form = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const newItem = {
-      id: new Date(),
+      id: Date.now(),
+      isDone: false,
       title: event.target.title.value,
       category: event.target.category.value,
       urgent: event.target.urgent.checked
