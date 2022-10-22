@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>R-ToDOApp (Khaldoun - From PC1)</h1>
+      <h1>R-ToDOApp (Khaldoun - From)</h1>
       <Form onAddItem={addItem} />
       <List items={items} />
     </div>
