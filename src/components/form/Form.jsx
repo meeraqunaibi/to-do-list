@@ -1,12 +1,10 @@
 import { useState } from "react";
 import "./form.css";
-//const arr = ["Shadi", "Noor", "Ahmed", " Khaled", "Raed", "Leen"];
-const Form = ({ onAddItems }) => {
+import Data from "../data";
+const Form = ({ onAddItems, input, setInput }) => {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [isUrgent, setIsUrgent] = useState(false);
-
-  //const [name, setName] = useState(arr);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -16,7 +14,12 @@ const Form = ({ onAddItems }) => {
       urgent: event.target.urgent.checked,
     };
 
-    onAddItems(newItem);
+    if (newItem.title === "" || newItem.category === "") {
+      alert("please enter valid values");
+      return;
+    } else {
+      onAddItems(newItem);
+    }
 
     setTitle("");
     setCategory("");
@@ -29,7 +32,6 @@ const Form = ({ onAddItems }) => {
     title = title.replace(" ", "-");
     setTitle(title);
   };
-
   return (
     <div className="form">
       <form onSubmit={handleSubmit} className="my-2">
@@ -49,9 +51,11 @@ const Form = ({ onAddItems }) => {
           <option value="" disabled>
             Select
           </option>
-          <option value="work">Work</option>
-          <option value="home">Home</option>
-          <option value="personal">Personal</option>
+          {Data.map((items) => (
+            <option key={items.value} value={items.value}>
+              {items.label}
+            </option>
+          ))}
         </select>
         <input
           name="urgent"
@@ -63,6 +67,15 @@ const Form = ({ onAddItems }) => {
         <div className="separator" />
         <input type="submit" value="Add to List" />
       </form>
+      <div className="flex items-center justify-center">
+        <input
+          type="text"
+          placeholder="search..."
+          className="m-2 p-3 rounded-xl outline-double w-64"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+      </div>
     </div>
   );
 };
