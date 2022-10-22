@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './form.css'
+import Category_option from './data.js';
 const Form = (props) => {
     const [title, setTitle] = useState('Go Swim');
     const [Category, setCategory] = useState('Category');
@@ -49,10 +50,17 @@ const Form = (props) => {
                     name='category' /*onChange={onCategoryChange}*/
                     onChange={(e) => { setCategoryy(e.target.value) }}
                     placeholder='CategoryS'>
-                    <option value="select" disabled>select</option>
+                    <option value="" disabled>select</option>
+                    {
+                        Category_option.map((option, index) => (
+                            <option key={option.value + index} value={option.value}>{option.label}</option>
+
+                        ))
+                    }
+                    {/*                     
                     <option value="work">Work</option>
                     <option value="home">Home</option>
-                    <option value="personal">Personal</option>
+                    <option value="personal">Personal</option> */}
                 </select>
                 <div className='chBox'>
                     <input checked={urgent}
