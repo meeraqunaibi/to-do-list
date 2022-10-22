@@ -1,26 +1,33 @@
-import './list.css';
+import "./list.css";
+import { ListItem } from "../listItem/listItem.component";
 
-/** 
+/**
  * @param {{
- * items: {
- *   title: event.target.title.value,
- *   category: event.target.category.value,
- *   urgent: event.target.urgent.checked
- * }[]
+ * item: {
+ *   id: number,
+ *   title: string,
+ *   isDone: boolean,
+ *   category: string,
+ *   urgent: string
+ * }
  * }} props
  */
+
 const List = (props) => {
   return (
-    <div className='items-list'>
+    <div className="items-list">
       <ul>
-        {
-          props.items.map((item, index) => <li key={index}>
-            {item.title} - {item.category} - {item.urgent ? 'URGENT' : 'non urgent'}
-          </li>)
-        }
+        {props.items.map((item, index) => (
+          <ListItem
+            key={index}
+            item={item}
+            showDialog={props.showDialog}
+            onFinish={props.onFinish}
+          />
+        ))}
       </ul>
     </div>
-  )
+  );
 };
 
 export default List;
