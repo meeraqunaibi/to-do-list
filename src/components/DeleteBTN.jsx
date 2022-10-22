@@ -12,7 +12,6 @@ const DeleteBTN = ({
     setItems([...items.slice(0, index), ...items.slice(index + 1)]);
     setDeletePoopUp(false);
   };
-
   return (
     <div className="absolute bg-slate-900  bg-opacity-60 w-screen h-screen flex items-center justify-center z-50">
       <div className=" flex items-center justify-between bg-white w-96 h-80 rounded-3xl shadow-2xl px-12 ">

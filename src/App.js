@@ -36,8 +36,8 @@ function App() {
           indexOfItem={indexOfItem}
         />
       )}
-      <div className="area">
-        <div className="z-50">
+      <div className="example-box">
+        <div className="z-40">
           <h1 className="text-2xl py-7 text-white text-center font-bold">
             React Todo Application
           </h1>
@@ -49,25 +49,7 @@ function App() {
             setIndexOfItem={setIndexOfItem}
           />
         </div>
-        <ul className="circles">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
+        <div className="background-shapes"></div>
       </div>
     </div>
   );
