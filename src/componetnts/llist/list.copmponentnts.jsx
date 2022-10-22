@@ -17,14 +17,15 @@ function List(props) {
                 props.items.map(item=><li>{item.title}-{item.category}-{item.urgent===true?("urgent:Urgent"):"urgent:NotUrgent"}</li>)
             }
           </ul> */}
-
+            <div className='licenter'>
             <ol class="list">
                 {
-                    props.items.map((item, index) => <li key={index} class="list-item one"> <span>{item.title}-{item.category}-{item.urgent ? ("urgent:Urgent") : "urgent:NotUrgent"}</span></li>)
+                    props.items.map((item, index) => <li  key={index} class="list-item one"> <span style={index%2===0?{backgroundColor:"cadetblue"}:{backgroundColor:"rgb(255, 68, 69)"}}>{item.title}-{item.category}-{item.urgent ? ("urgent:Urgent") : "urgent:NotUrgent"}</span></li>)
                 }
 
 
             </ol>
+            </div>
 
 
 

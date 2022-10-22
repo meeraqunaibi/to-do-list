@@ -14,15 +14,30 @@ ol {
     list-style-type: none;
     line-height: 2.2;
     margin-left: -40px;
+    width: 100%;
 }
 
+.licenter
+{
+    display: flex;
+    
+    justify-content: center;
+    align-items:flex-start;
+    justify-items: start;
+    width: 100%;
+}
 ol li {
     display: block;
     position: relative;
+    margin: 5px;
+    width: 80%;
 }
 
 ol li span {
     margin-left: 40px;
+    padding: 10px;
+    border-radius: 30px;
+    background-color: cadetblue;
 }
 
 ol li:before {
