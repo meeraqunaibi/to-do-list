@@ -47,6 +47,8 @@ const Form = (props) => {
           <option value="work">Work</option>
           <option value="home">Home</option>
           <option value="personal">Personal</option>
+          <option value="fun">fun</option>
+
         </select>
         <input
           name="urgent"
