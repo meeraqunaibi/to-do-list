@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>R-ToDOApp (hallow)</h1>
+      <h1>R-ToDOApp (hallow every day)</h1>
       <Form onAddItem={addItem} />
       <List items={items} />
     </div>
