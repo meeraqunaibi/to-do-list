@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>To Do List</h1>
+      <h1>To Do List (tuqa)</h1>
       <Form addItem={addItem} />
       <br/>
       <List items={items} />
