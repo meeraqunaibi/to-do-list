@@ -20,7 +20,7 @@ form input[type="checkbox"] {
 
 form input[type="submit"] {
     border: 0;
-    background-color: #7f7f7f;
+    background-color: #00cf1c;
     color: white;
     cursor: pointer;
 }

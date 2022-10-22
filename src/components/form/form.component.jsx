@@ -55,7 +55,7 @@ const Form = (props) => {
           onChange={(e) => setIsUrgent(e.target.checked)}
         />
         <label>Urgent</label>
-        <div className="separator" />
+        <div className="separator"/>
         <input type="submit" value="Add to List" />
       </form>
     </div>
