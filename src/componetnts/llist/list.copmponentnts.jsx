@@ -11,7 +11,7 @@ import './list.css';
 function List(props) {
     return (
         <div className='items_list'>
-            <h1>The Item List</h1>
+            <h1>The Items List</h1>
             {/* <ul>
             {
                 props.items.map(item=><li>{item.title}-{item.category}-{item.urgent===true?("urgent:Urgent"):"urgent:NotUrgent"}</li>)

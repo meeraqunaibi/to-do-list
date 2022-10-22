@@ -21,7 +21,6 @@ select {
 
 form {
     display: flex;
-    /*heelo*/
     flex-direction: column;
     align-items: center;
     justify-content: center;
