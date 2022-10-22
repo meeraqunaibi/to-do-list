@@ -10,6 +10,7 @@ const Form = (props) => {
         event.preventDefault();
         console.log(event.target.title.value);
         const newItem = {
+            id:new Date,
             title: event.target.title.value,
             category: event.target.category.value,
             urgent: event.target.urgent.checked,

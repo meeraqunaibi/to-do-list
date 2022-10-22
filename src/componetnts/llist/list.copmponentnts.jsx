@@ -1,4 +1,5 @@
 import './list.css';
+import Category_option from '../form/data';
 /**
  * @param {{
  * items:{
@@ -23,7 +24,21 @@ function List(props) {
             
                 {
                     
-                    props.items.map((item, index) => <li  key={index} className="list-item one"> <span style={index%2===0?{backgroundColor:"cadetblue"}:{backgroundColor:"rgb(255, 68, 69)"}}>{item.title}-{item.category}-{item.urgent ? ("urgent:Urgent") : "urgent:NotUrgent"}</span></li>)
+                    props.items.map((item, index) => <li  key={index} className="list-item one"> 
+                    <span style={index%2===0?{backgroundColor:"cadetblue"}:{backgroundColor:"rgb(255, 68, 69)"}}>
+
+                        {item.title}-
+                        
+                        {/* {item.category} */}
+                        {
+                            Category_option.filter(cat=>cat.value===item.category)[0]?.label
+                        }
+                        
+                        
+                        -{item.urgent ? ("urgent:Urgent") : "urgent:NotUrgent"}{"   "}<button onClick={()=>props.onDelete(item.id)}>x</button></span>
+                        
+                        
+                        </li>)
                 }
         
 

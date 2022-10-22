@@ -10,13 +10,17 @@ function App() {
     console.log(item);
 
   }
+  const Delete=(id)=>{
+    setItem(item.filter(item=>item.id!==id));
+
+  }
   return (
 
     <div className="App">
       <h1>R-To Do App</h1>
       <Form onAddFunction={addItem} />
       <hr></hr>
-      <List items={item} />
+      <List onDelete={Delete} items={item} />
 
 
       {/*       
