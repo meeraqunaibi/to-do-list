@@ -12,8 +12,9 @@ function App() {
 
   return (
     <div className="App">
-      <h1>R-ToDOApp (tuqa)</h1>
-      <Form onAddItem={addItem} />
+      <h1>To Do List</h1>
+      <Form addItem={addItem} />
+      <br/>
       <List items={items} />
     </div>
   );

@@ -1,32 +1,20 @@
-form {
+.form{
     display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    justify-content: center;
 }
 
-form input,
-form select {
-    padding: 10px;
-    margin: 10px;
-    border-radius: 5px;
-    border-width: 1px;
+.row{
+    margin:10px;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: rgb(207, 207, 207);
+    padding: 20px;
+    border-radius: 30px;
+    border: none;
+    width: 250px;
+   
 }
 
-form input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-}
-
-form input[type="submit"] {
-    border: 0;
-    background-color: #7f7f7f;
-    color: white;
-    cursor: pointer;
-}
-
-form .separator {
-    margin: 0 15px;
-    border-right: 1px solid #c3c3c3;
-    height: 51px;
-}
+.button  { cursor: pointer;background-color: rgb(211, 87, 37);width: 150px;  }

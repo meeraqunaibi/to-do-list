@@ -1,65 +1,80 @@
-import { useState } from 'react';
-import './form.css'
+import { useState } from "react";
+import "./form.css";
 const Form = (props) => {
-  const [title, setTitle] = useState('Go Swim');
-  const [category, setCategory] = useState('');
-  const [isUrgent, setIsUrgent] = useState(false);
+  const [title, changetitle] = useState("Run");
+  const [category, changecategory] = useState("");
+  const [Urgent, changeUrgent] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const newItem = {
       title: event.target.title.value,
       category: event.target.category.value,
-      urgent: event.target.urgent.checked
-    }
+      urgent: event.target.urgent.checked,
+    };
 
-    console.log(newItem);
+    props.addItem(newItem);
 
-    setTitle("");
-    setCategory("");
-    setIsUrgent(false);
-  }
+    changetitle("");
+    changecategory("");
+    changeUrgent(false);
+  };
 
-  const onTitleChange = (event) => {
+  const handletilte = (event) => {
     let title = event.target.value;
-    title = title.replace(".", "-");
-    title = title.replace(" ", "-");
-    setTitle(title);
-  }
+    title = title.replace(".", " ");
+    title = title.replace("-", " ");
+    changetitle(title);
+  };
 
   return (
-    <div className="form">
-      <form onSubmit={handleSubmit}>
-        <input
-          placeholder="Title"
-          name="title"
-          type="text"
-          value={title}
-          onChange={onTitleChange}
-        />
-        <select
-          name="category"
-          placeholder="Category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        >
-          <option value="" disabled>Select</option>
-          <option value="work">Work</option>
-          <option value="home">Home</option>
-          <option value="personal">Personal</option>
-        </select>
-        <input
-          name="urgent"
-          type="checkbox"
-          checked={isUrgent}
-          onChange={(e) => setIsUrgent(e.target.checked)}
-        />
-        <label>Urgent</label>
-        <div className="separator" />
-        <input type="submit" value="Add to List" />
+    <div>
+      <form onSubmit={handleSubmit} className="form">
+        <div className="row">
+          <label htmlFor="tilte" title="title">
+            Title :{" "}
+          </label>
+          <input
+            placeholder="Title"
+            name="title"
+            type="text"
+            value={title}
+            onChange={handletilte}
+          />
+        </div>
+        <div className="row">
+          <label htmlFor="category" title="category">
+            Category :{" "}
+          </label>
+          <select
+            name="category"
+            placeholder="Category"
+            value={category}
+            onChange={(event) => changecategory(event.target.value )}
+          >
+            <option value="" disabled>
+              Select
+            </option>
+            <option value="work">Work</option>
+            <option value="home">Home</option>
+            <option value="personal">Personal</option>
+          </select>
+        </div>
+        <div className="row">
+          <input
+            name="urgent"
+            type="checkbox"
+            checked={changeUrgent}
+            onChange={(event) => changeUrgent(event.target.checked)}
+          />
+          <label>Urgent</label>
+        </div>
+        
+
+        <input className="button row" type="submit" value="Add to List" />
       </form>
     </div>
-  )
+  );
 };
 
 export default Form;
