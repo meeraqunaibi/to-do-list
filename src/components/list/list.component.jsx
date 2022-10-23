@@ -1,6 +1,7 @@
 import CATIGORY_OPTION from '../../constants/data';
 import './list.css'
 import deleteIcon from '../../assets/delete.png';
+import Item from './item.component';
 
 const List = (props) => {
   return (
@@ -8,26 +9,14 @@ const List = (props) => {
       items of list
       <ul>
         {
-          props.items.map((item, index) =>
-            <li key={index} >
-              <h1>{item.title} - {item.category} - {item.urgent ? 'urgent' : 'nonurgent'}</h1>
-              
-              <span>
-                {
-                  CATIGORY_OPTION.filter(cat => cat.value === item.category)[0]?.label
-                }
-              </span>
-              {/* {item.title} - {item.category} - {item.urgent ? 'urgent' :'nonurgent'} */}
-
-              <button onClick={() => props.onDelete(item.id)}>
-                <img src={deleteIcon} alt="delete" width={25} />
-              </button>
-            </li>)
-        }
+          props.items.map(item => (
+            <Item key={item.id} item={item}
+              onDelete={props.onDelete}
+              onFinish={props.onFinish} />
+         )
+)}
       </ul>
-      <div>
 
-      </div>
     </div>
 
   );

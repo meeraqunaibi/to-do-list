@@ -15,6 +15,15 @@ const deleteItem  = (id)=>{
   const newItems = items.filter(item=> item.id !== id);
   setitems(newItems);
   }
+  ///
+
+
+  const finishItem = (id) => {
+  
+    const newItems = items.map(item => item.id === id ? { ...item, isDone: true } : item);
+    setitems(newItems);
+  }
+
   return (
     <div className="App">
       {/* <ul>
@@ -35,7 +44,7 @@ const deleteItem  = (id)=>{
 <Form   onAddItem={addItem}/>
  
      {/* {items.length} */}
-     <List items={items} onDelete={deleteItem} />
+     <List items={items} onDelete={deleteItem} onFinish={finishItem}/>
     </div>
   );
 }
