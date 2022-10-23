@@ -14,6 +14,7 @@ const Form = (props) => {
             title: event.target.title.value,
             category: event.target.category.value,
             urgent: event.target.urgent.checked,
+            checked:false,
 
         }
 
@@ -34,8 +35,6 @@ const Form = (props) => {
         let Category = "Your Category Is" + event.target[event.target.selectedIndex].text;
         setCategory(Category);
     }
-    const [namee, setName] = useState(["mohammad", "nidal", "rajbe", "ana"]);
-    const arr = ["mohammad", "nidal", "rajbe", "ana"];
     return (
         <div className='form'>
             <form onSubmit={handleSubmit}>
@@ -64,28 +63,15 @@ const Form = (props) => {
                     <option value="personal">Personal</option> */}
                 </select>
                 <div className='chBox'>
-                    <input checked={urgent}
+                    <input 
                         onChange={(e) => { setUrgent(e.target.value) }}
                         type="checkbox"
-                        name='urgent' />
+                        name='urgent'
+                        className='largerCheckbox' />
                     <label htmlFor="">Urgent</label>
                 </div>
                 <input id='submit' type="submit" value='Add To List' />
             </form>
-            <h3>{Categoryy}</h3>
-            {/* <ul> */}
-            {
-                /* namee.map((name,index)=><li>{name}-{name.toUpperCase()-{index}}</li>)
-                arr.map(name=>{
-                  
-                
-                <li>{name}-{name.toUpperCase()}</li>
-              
-              
-              })
-              */
-            }
-            {/* </ul> */}
 
         </div>
     );

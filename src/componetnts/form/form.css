@@ -1,14 +1,9 @@
-.form input,
-select {
-    padding: 10px 65px;
-    ;
-    margin: 10px;
-}
-
-.form input {
-    padding: 10px;
-    ;
-    margin: 10px;
+input,select
+{
+    margin: 15px;
+    width: 10%;
+    padding: 15px 70px;
+    border-radius: 15px;
 }
 
 .chBox {
@@ -18,15 +13,29 @@ select {
     justify-items: center;
     padding: 10px;
 }
+input.largerCheckbox {
+    transform : scale(3);
+
+    
+}
+select,input{
+    color: white;
+    background-color:rgb(103, 123, 203);
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1; /* Firefox */
+}
 
 form {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     justify-items: center;
 }
+form 
 
 #submit {
-    padding: 10px 65px;
+    padding: 15px 70px;
 }

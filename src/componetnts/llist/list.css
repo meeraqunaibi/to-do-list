@@ -1,34 +1,107 @@
 .items_list {
-    display: flex;
-    flex-direction: column;
-   justify-content: center;
-   align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
 }
-.items_list h1{
-    color: red;
+
+.items_list h1 {
+  color: rgb(103, 123, 203);
 }
+
 ol {
-    display: flex;
-    flex-direction: column;
-    counter-reset: item;
-    list-style-type: none;
-    line-height: 2.2;
-    margin-left: -40px;
-    align-items: center;
-    justify-content: center;
-    justify-items: center;
-    width: 100%;
-    
+  display: flex;
+  flex-direction: column;
+  counter-reset: item;
+  list-style-type: none;
+  line-height: 2.2;
+  margin-left: -40px;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  width: 100%;
+
 }
 
 ol li {
-    display: flex;
-    position: relative;
-    margin: 10px;
-    width:70%;
+  display: flex;
+  position: relative;
+  margin: 10px;
+  width: 100%;
 }
 
+.Todo_card {
+  background-color: rgb(103, 123, 203);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-items: flex-start;
+  justify-content: space-between;
+  border-radius: 5px;
+  margin: 5px 50px;
+  padding: 5px;
+}
+
+.Todo_info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0px;
+}
+
+.Todo_info h2,
+p {
+  color: white;
+  margin: 10px;
+}
+
+.Button_todo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: none;
+  margin: 0px;
+}
+
+button {
+  font-size: 40px;
+  margin: 10px;
+  border: 0px;
+}
+
+#true {
+  color: white;
+  background-color: green;
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px black;
+}
+
+button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#false {
+  color: white;
+  background-color: red;
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px black;
+}
+
+.alert {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+
+/**/
+/*
 ol li span {
     margin-left: 40px;
     padding: 10px;
@@ -50,5 +123,4 @@ ol li:before {
     text-align: center;
     border-radius: 2em;
     font-weight: 700;
-}
-
+} */
