@@ -1,13 +1,16 @@
 import { useState } from 'react';
-import './form.css'
+import './form.css';
+import CATEGORIES_LIST from './../data/data';
 const Form = (props) => {
   const [title, setTitle] = useState('Go Swim');
   const [category, setCategory] = useState('');
   const [isUrgent, setIsUrgent] = useState(false);
 
+  const items = CATEGORIES_LIST;
   const handleSubmit = (event) => {
     event.preventDefault();
     const newItem = {
+      id:new Date(),
       title: event.target.title.value,
       category: event.target.category.value,
       urgent: event.target.urgent.checked
@@ -18,6 +21,7 @@ const Form = (props) => {
     setTitle("");
     setCategory("");
     setIsUrgent(false);
+
   }
 
   const onTitleChange = (event) => {
@@ -44,21 +48,24 @@ const Form = (props) => {
           onChange={(e) => setCategory(e.target.value)}
         >
           <option value="" disabled>Select</option>
-          <option value="work">Work</option>
-          <option value="home">Home</option>
-          <option value="personal">Personal</option>
-        </select>
-        <input
-          name="urgent"
-          type="checkbox"
-          checked={isUrgent}
-          onChange={(e) => setIsUrgent(e.target.checked)}
-        />
-        <label>Urgent</label>
-        <div className="separator" />
-        <input type="submit" value="Add to List" />
-      </form>
-    </div>
+          {
+            items.map((item) => (
+              <option value={item.value} > {item.label} </option>
+
+        ))
+          }
+      </select>
+      <input
+        name="urgent"
+        type="checkbox"
+        checked={isUrgent}
+        onChange={(e) => setIsUrgent(e.target.checked)}
+      />
+      <label>Urgent</label>
+      <div className="separator" />
+      <input type="submit" value="Add to List" />
+    </form>
+    </div >
   )
 };
 
