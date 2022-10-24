@@ -1,9 +1,47 @@
 ul{
     list-style-type: none;
     padding: 2vmin 4vmin;
+    width: 70%;
+    margin: 0 auto;
 }
 ul li{
-    padding: 2vmin 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 1vmin 5vmin;
     box-shadow: 1px 1px 3px rgba(0,0,0, 0.5);
     margin: 2vmin 0;
+    background-color: #ada3a3;
+    border-left: 6px solid greenyellow;
+    border-radius: 1vmin;
+}
+ul li .data{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+} 
+ul li .actions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:3vmin;
+}
+ul li button{
+    border: none;
+    margin: 0;
+    padding: 0;
+    background:none;
+    cursor: pointer;
+}
+
+ul li h3{
+    font-size: 4vmin;
+    margin: 0;
+}
+ul li.urgent{
+    border-color: crimson;
+}
+
+
+ul li h3.done, ul li span.done{
+    text-decoration: line-through;
 }

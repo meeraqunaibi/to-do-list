@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import './form.css'
+import './form.css'; 
+import { CATEGORY_OPTIONS } from '../../constants/data';
 const Form = ({onAddItem}) => {
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
@@ -8,9 +9,16 @@ const Form = ({onAddItem}) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const newItem = {
+      id: new Date(),
       title: event.target.title.value,
       category: event.target.category.value,
-      urgent: event.target.urgent.checked
+      urgent: event.target.urgent.checked, 
+      isDone: false
+    }
+
+    if(newItem.category === ""){
+      alert("Choose a category!"); 
+      return;
     }
 
     onAddItem(newItem);
@@ -38,14 +46,13 @@ const Form = ({onAddItem}) => {
         />
         <select
           name="category"
-          placeholder="Category"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         >
           <option value="" disabled>Select</option>
-          <option value="Work">Work</option>
-          <option value="Home">Home</option>
-          <option value="Personal">Personal</option>
+          {
+            CATEGORY_OPTIONS.map(item => <option key={item.value} value={item.value}>{item.title}</option>)
+          }
         </select>
         <input
           name="urgent"

@@ -2,6 +2,9 @@ form {
     display: flex;
     align-items: center;
     justify-content: center;
+    max-width: 500%;
+    width: 70vw;
+    margin: 0 auto;
 }
 
 form input,
