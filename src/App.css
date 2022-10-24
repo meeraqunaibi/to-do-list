@@ -9,6 +9,7 @@
   background-color: #FBF2CF;
 }
 
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -93,19 +94,70 @@ ul li{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 3px;
-  border-radius: 6px;
+  margin: 3px;  border-radius: 6px;
+  border-left: 8px #61dafb solid;
   font-size: medium;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   
 }
+.unr{
+  border-left: 8px #C6EBC5 solid;
+}
+
 
 ul li button{
-  background-color: #C6EBC5;
-  border-radius: 5px;
-  width: 80px;
-  height: 30px;
+
+ background: none;
+ border: none;
   margin-right: 10px;
   font-size: medium;
   font-weight: 600;
+  cursor: pointer;
 }
+ span button:not([disabled]):hover{
+  opacity: 0.8;
+
+ }
+
+ span  button:not([disabled]):active{
+  position: relative;
+    right: -1px;
+    bottom: -1px;
+
+ }
+ span button[disabled]{
+  opacity: 0.7;
+  cursor:not-allowed;
+
+ }
+ul li span{
+  margin-left: 10px;
+  
+}
+.popup{
+  position:absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #7f7a7577;
+  width: 100vw;
+  height: 100vh;
+}
+.popup h2{
+  font-weight: 700;
+  padding: 20px;
+  border: 2px solid;
+}
+
+.popup button{
+    background: none;
+    border: none;
+     margin-right: 10px;
+     font-size: medium;
+     font-weight: 600;
+     cursor: pointer;
+  
+}
+
+

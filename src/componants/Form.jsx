@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import data from '../data'
 const Form=({add})=>{
    const[title,settitle] =useState('')
    const [task,settask]=useState('')
@@ -8,7 +8,9 @@ const Form=({add})=>{
     const handelsubmit=(e)=>{
         e.preventDefault()
     const newItem={
-        title,task,urgent,id:Math.random()*100
+        title,task,urgent,
+        id:Math.random()*100,
+        done:false
     }
     add(newItem);
         settitle('');
@@ -31,16 +33,22 @@ const Form=({add})=>{
              name='title'
              value={title}
              placeholder='Task...'
+             required
              //onChange={(e)=>handlechange(e)}
              onChange={handlechange}
 
              />
-            <select name="task"   value={task} 
+            <select name="task"   required  value={task} 
              onChange={(e)=>{settask(e.target.value)}}>
                  <option value="select">select</option>
-                <option value="work">work</option>
-                <option value="home">home</option>
-                <option value="personal">personal</option>
+                { data.map((item,i)=>{
+                    return   <option 
+                    key={i} 
+                     value={item.value}>
+                        {item.label}
+                        </option>
+                })}
+               
             </select>
             <input type="checkbox" name="urgent"  checked={urgent} 
              onChange={e=>{seturgent(e.target.checked)}} />
