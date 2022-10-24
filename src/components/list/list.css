@@ -2,3 +2,66 @@
     border-top: 2px solid #e3e3e3;
     padding: 10px;
 }
+ul{
+    list-style-type: none;
+    margin: 10px;
+    display:flex ;
+    flex-direction: column;
+    align-items: center;    
+justify-content: space-around;
+}
+ul li{
+    display: flex;
+    justify-content: flex-start;
+    justify-content: space-around;
+    border-left: 5px solid green ;
+    background-color: rgba(123, 138, 139, 0.747);
+    padding: 10px;
+    margin-bottom: 5px ;
+    width: 25rem;
+
+}
+.urgent{
+    border-left-color: red ;
+    color: #e3e3e3;
+    background-color: rgba(12, 12, 12, 0.692);
+}
+.delete{
+    display: flex;
+    justify-content: end;
+}
+ul li button{
+    background-color: blue;
+    color: #e3e3e3;
+    border-radius: 10px;
+border: none;  
+font-size: large;
+}
+.Done{
+    color: rgb(255, 255, 255);
+}
+
+
+div ul li button button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 0;
+}
+
+div ul li button:not([disabled]):hover {
+    opacity: 0.8;
+}
+
+div ul li button:not([disabled]):active {
+    position: relative;
+    right: -1px;
+    bottom: -1px;
+    
+}
+div ul li button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    color: yellow;
+}
+

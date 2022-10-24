@@ -1,3 +1,37 @@
-.App {
-  text-align: center;
+body{
+  background-color: #55555579;
+
+
+}
+.header{
+  margin-top: 30px;
+display: flex;
+justify-content: center;
+color: rgb(252, 252, 252);
+background-color: rgb(33, 98, 163);
+border: 1px solid rgb(255, 255, 255);
+width: 15rem;
+border-radius: 40px 0px ;
+  font-family: 'Times New Roman', Times, serif;
+
+}
+.color-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.color{
+  margin-top: 30px;
+  margin-right: 10px;
+  padding:0px 20px;
+   font-weight:bold;
+  
+}
+.color select{
+  color: aliceblue;
+  background-color: rgb(4, 81, 145);
+  font-size: 20px;
+}
+.color option{
+  color: aliceblue
 }
