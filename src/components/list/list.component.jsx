@@ -16,7 +16,7 @@ const List = (props) => {
     <div className="items-list"> 
       <ul >
         {props.items.map((item, index) => (
-          <li key={item.id} className={`row ${item.urgent?'urgent':''}`}>
+          <li key={item.id} className={`rowlist row ${item.urgent?'urgent':''}`}>
             <div className="data">
             <h2>
               {/* {index + 1}

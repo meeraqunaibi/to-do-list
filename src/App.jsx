@@ -1,10 +1,13 @@
 import { useState } from "react";
 import "./App.css";
-import Form from "./components/form/form.component";
-import List from "./components/list/list.component";
+
+
+import FormPage from "./components/pages/formpage/form.page";
+import LIstViewPage from "./components/pages/listviewpage/listview.page";
 
 function App() {
   const [items, setItems] = useState([]);
+  const [currentpage, changepage] = useState("form");
 
   const addItem = (item) => {
     setItems([...items, item]);
@@ -19,10 +22,17 @@ function App() {
     <div className="App">
       <h1>To Do List (tuqa)</h1>
       <div className="appbody">
-        <Form addItem={addItem} />
+        {/* <Form addItem={addItem} />
         <br/>
         <hr/>
-        <List items={items} ondelete={deletefun} />
+        <List items={items} ondelete={deletefun} /> */}
+        <div>
+          <button onClick={() => changepage("form")}>to do list form</button>
+          <button onClick={() => changepage("listview")}>veiw list </button>
+        </div>
+
+        {currentpage === "form" && <FormPage addItem={addItem} />}
+        {currentpage === "listview" && <LIstViewPage items={items} ondelete={deletefun}/>}
       </div>
     </div>
   );
