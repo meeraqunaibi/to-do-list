@@ -10,11 +10,21 @@ function App() {
     setItems([...items, item]);
   }
 
+  const delateItem = (id) => {
+    const newItemsData = items.filter(it => it.id !== id);
+    setItems(newItemsData);
+  }
+
+  const Complete = (id) => {
+    const newitem = items.map(item => item.id === id ? { ...item, isDone: true } : item);
+    setItems(newitem);
+  }
+
   return (
     <div className="App">
       <h1>R-ToDOApp (hallow every day)</h1>
       <Form onAddItem={addItem} />
-      <List items={items} />
+      <List onDelate={delateItem} onComplete={Complete} items={items} />
     </div>
   );
 }
