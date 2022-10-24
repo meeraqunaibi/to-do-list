@@ -1,6 +1,5 @@
 import './list.css';
 import Category_option from '../form/data';
-import { useState } from 'react';
 /**
  * @param {{
  * items:{
@@ -11,16 +10,13 @@ import { useState } from 'react';
  * }} props 
  */
 
-
 function List(props) {
-    const [deleteSure, setDeleteSure] = useState(false);
     function myFunction(id) {
-        let text;
-        if (window.confirm("are you sure") == true) {
-            setDeleteSure(true);
+        if (window.confirm("are you sure") === true) {
+
             props.onDelete(id)
         } else {
-            setDeleteSure(false);
+
         }
     }
     return (
@@ -37,7 +33,7 @@ function List(props) {
                 {
 
                     props.items.map((item, index) => (
-                        <li>
+                        <li key={item.id}>
                             <div style={item.urgent ? { borderLeft: "12px solid green" } : { borderLeft: "12px solid red" }} className='Todo_card'>
                                 <div className='Todo_info'>
                                     <h2 style={item.checked ? { textDecorationLine: "line-through" } : null} >{item.title}</h2>
