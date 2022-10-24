@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import './form.css'
+import './form.css';
+import GATIGORY_OPTION from '/Users/manalamro/react-todo-app/src/constants/data.js'
+
 const Form = (props) => {
   const [title, setTitle] = useState('Go Swim');
   const [category, setCategory] = useState('');
@@ -8,9 +10,16 @@ const Form = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const newItem = {
+      id: Date.now(),
+      isDone: false,
       title: event.target.title.value,
       category: event.target.category.value,
       urgent: event.target.urgent.checked
+    }
+//verification
+    if (newItem.category === "") {
+      alert("You must select a category!");
+      return;
     }
 
     props.onAddItem(newItem);
@@ -35,6 +44,7 @@ const Form = (props) => {
           name="title"
           type="text"
           value={title}
+          required
           onChange={onTitleChange}
         />
         <select
@@ -44,10 +54,15 @@ const Form = (props) => {
           onChange={(e) => setCategory(e.target.value)}
         >
           <option value="" disabled>Select</option>
-          <option value="work">Work</option>
-          <option value="home">Home</option>
-          <option value="personal">Personal</option>
-          <option value="fun">fun</option>
+          {
+            GATIGORY_OPTION.map(item => (
+              <option value={item.value}
+               key={item.value}>
+                {item.lable}
+              </option>
+            ))
+          }
+
 
         </select>
         <input
