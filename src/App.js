@@ -1,62 +1,74 @@
 import { useState } from 'react';
 import './App.css';
 import Condelet from './componants/condelet';
-import Form from './componants/Form';
-import List from './componants/List';
- 
+import Header from './componants/header';
+import Addpage from './componants/pages/Addpage';
+import View from './componants/pages/View';
+
 function App() {
-const names=['all','awf','hms','ibr','moh','ram','yak']
- const [items,setItem]= useState([])
-const [idtodel,setidtodel]=useState('')
-const [isopen, setisopen] = useState(false)
-   const handleadd=(item)=>{
-       setItem([...items,item])
-   }
-  const  handelDelet=()=>{
-     const newitems= items.filter(item=>item.id !==idtodel)
-     setItem(newitems)
-     setidtodel('')
+  const [items, setItem] = useState(JSON.parse(localStorage.getItem('todolist')) || [])
+  const [idtodel, setidtodel] = useState('')
+  const [isopen, setisopen] = useState(false)
+  const [curent, setcurent] = useState(items.length?'view':'add')
+
+  const handleadd = (item) => {
+    const newitems = [...items, item]
+    setItem(newitems)
+    localStorage.setItem('todolist', JSON.stringify(newitems))
+  }
+  const handelDelet = () => {
+    const newitems = items.filter(item => item.id !== idtodel)
+    setItem(newitems)
+    localStorage.setItem('todolist', JSON.stringify(newitems))
+    setidtodel('')
     setisopen(false)
 
-   }
-   const handelDone=(id)=>{
-   const newitems= items.map(item=>{
-      if(item.id===id){
-       return  {...item,done:true}
+  }
+  const handelDone = (id) => {
+    const newitems = items.map(item => {
+      if (item.id === id) {
+        return { ...item, done: true }
       }
       return item
     })
-    newitems.sort((a,b)=>a.done>b.done? 1:-1)
+    newitems.sort((a, b) => a.done > b.done ? 1 : -1)
     setItem(newitems)
-   
-   }
-   const handlepopup=(id)=>{
+    localStorage.setItem('todolist', JSON.stringify(newitems))
+
+  }
+  const handlepopup = (id) => {
     setidtodel(id)
     setisopen(true)
 
-   }
+  }
   return (
-  
-    
 
-    <div  className="App" >
-        <h1>TODO..</h1>
+
+
+    <div className="App" >
+      <Header setcurent={setcurent} curent={curent} />
       
-        {isopen? <Condelet  delet={handelDelet} 
-        close={setisopen}
-        /> :null } 
-       
-       <Form  add={handleadd} />
-        <List  
-        items={items} 
+      
+      {curent === 'add' && <Addpage add={handleadd} />}
+
+      {curent === 'view' && <View
+        items={items}
         onDelet={handelDelet}
-         Done={handelDone}
-         pophandel={handlepopup}
-          />
-       
-        
+        Done={handelDone}
+        pophandel={handlepopup}
+
+      />}
+
+      {isopen ? <Condelet delet={handelDelet}
+        close={setisopen}
+      /> : null}
+
+
+
+
+
     </div>
-   
+
   );
 }
 
