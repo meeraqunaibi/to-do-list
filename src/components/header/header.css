@@ -1,0 +1,23 @@
+.header{
+    background-color: #d3d3d3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3vmin 50vmin;
+    margin-bottom: 5vmin;
+}
+
+.header button{
+    border: none;
+    background: none;
+    margin-right: 3vmin;
+    font-size: 2.5vmin;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.header button.active{
+    color: #000;
+    background-color: aquamarine;
+    padding: 1vmin 2vmin;
+}

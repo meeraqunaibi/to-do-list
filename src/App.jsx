@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import './App.css';
-import Form from './components/form/form.component';
-import List from './components/list/list.component';
 import Popup from './components/popup/popup.component';
+import Header from './components/header/header.component';
+import AddPage from './components/add-page/add-page.component';
+import ViewPage from './components/view-page/view-page.component';
 function App() {
   const [items,setItems] = useState([]);
   const [itemId, setItemId] = useState(null);
   const [alertBoxStatus, setAlertBoxStatus] = useState(false);
+  const [currentPage, setCurrentPage] = useState("add");
 
   const addItem = (item)=>{
     setItems(
@@ -31,12 +33,23 @@ function App() {
     setAlertBoxStatus(false);
   };
 
+  const handleAddClick = ()=>{
+    setCurrentPage("add");
+  }; 
+
+  const handleViewClick = () =>{
+    setCurrentPage("view");
+  };
+
   return (
     <div className="App">
-      <h1>R-ToDOApp</h1>
-      <Form onAddItem={addItem} />
-      <hr/>
-      <List items={items} onDelete={showAlertBox} onCheck={markAsDone}/>
+      <Header 
+        handleAddClick={handleAddClick}
+        handleViewClick={handleViewClick}
+        currentPage={currentPage}
+      />
+      {currentPage === "add" && <AddPage onAddItem={addItem}/>}
+      {currentPage === "view" && <ViewPage items={items} onDelete={showAlertBox} onCheck={markAsDone}/>}
 
       <Popup 
         show={alertBoxStatus}
