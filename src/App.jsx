@@ -1,13 +1,13 @@
 import { useState } from "react";
 import "./App.css";
-import Form from "./components/form/form.component";
-import List from "./components/list/list.component";
-import Modal from "./components/modal/modal.component";
+import AddItem from "./pages/addItem/addItem.component";
+import ViewItems from "./pages/viewItems/viewItem.component";
 
 function App() {
   const [items, setItems] = useState([]);
   const [isShown, setIsShown] = useState(false);
   const [id, setId] = useState();
+  const [currentPage, setCurrentPage] = useState("");
   const addNewItem = (item) => {
     setItems([...items, item]);
   };
@@ -34,10 +34,31 @@ function App() {
   return (
     <div className="App">
       <h1 style={{ fontWeigh: 600 }}>R-ToDOApp</h1>
-      <Form addItem={addNewItem} />
-      <List onFinish={onFinish} items={items} showDialog={showDialog} />
-      {isShown ? (
-        <Modal id={id} deleteTask={onDelete} undoDelete={undoDelete} />
+      <button
+        onClick={() => {
+          setCurrentPage("view");
+        }}
+      >
+        view item
+      </button>
+      <button
+        onClick={() => {
+          setCurrentPage("add");
+        }}
+      >
+        add item
+      </button>
+      {currentPage === "add" ? <AddItem addNewItem={addNewItem} /> : ""}
+      {currentPage === "view" ? (
+        <ViewItems
+          onFinish={onFinish}
+          items={items}
+          showDialog={showDialog}
+          id={id}
+          deleteTask={onDelete}
+          undoDelete={undoDelete}
+          isShown={isShown}
+        />
       ) : (
         ""
       )}
