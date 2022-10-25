@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import Header from "./components/header/header.component";
 import AddItem from "./pages/addItem/addItem.component";
 import ViewItems from "./pages/viewItems/viewItem.component";
 
@@ -33,21 +34,7 @@ function App() {
   };
   return (
     <div className="App">
-      <h1 style={{ fontWeigh: 600 }}>R-ToDOApp</h1>
-      <button
-        onClick={() => {
-          setCurrentPage("view");
-        }}
-      >
-        view item
-      </button>
-      <button
-        onClick={() => {
-          setCurrentPage("add");
-        }}
-      >
-        add item
-      </button>
+      <Header setCurrentPage={setCurrentPage} />
       {currentPage === "add" ? <AddItem addNewItem={addNewItem} /> : ""}
       {currentPage === "view" ? (
         <ViewItems
