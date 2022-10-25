@@ -1,24 +1,19 @@
 form {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 500%;
-    width: 70vw;
-    margin: 0 auto;
+    flex-direction: column;
+    gap: 3vmin;
 }
 
 form input,
 form select {
-    padding: 10px;
-    margin: 10px;
-    border-radius: 5px;
+    padding: 1.5vmin;
+    border-radius: 1vmin;
     border-width: 1px;
 }
 
 form input[type="checkbox"] {
     width: 20px;
     height: 20px;
-    margin-right: 5px;
 }
 
 form input[type="submit"] {
@@ -28,6 +23,10 @@ form input[type="submit"] {
     cursor: pointer;
 }
 
+form div {
+    display: flex;
+    gap: 1vmin;
+}
 form .separator {
     margin: 0 15px;
     border-right: 1px solid #c3c3c3;

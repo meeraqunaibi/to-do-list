@@ -1,62 +1,76 @@
-import { useState } from 'react';
-import './App.css';
-import Popup from './components/popup/popup.component';
-import Header from './components/header/header.component';
-import AddPage from './components/add-page/add-page.component';
-import ViewPage from './components/view-page/view-page.component';
+import { useState } from "react";
+import "./App.css";
+import Popup from "./components/popup/popup.component";
+import Header from "./components/header/header.component";
+import AddPage from "./components/add-page/add-page.component";
+import ViewPage from "./components/view-page/view-page.component";
 function App() {
-  const [items,setItems] = useState([]);
+  const [items, setItems] = useState(
+    JSON.parse(localStorage.getItem("items") ?? "[]")
+  );
   const [itemId, setItemId] = useState(null);
   const [alertBoxStatus, setAlertBoxStatus] = useState(false);
-  const [currentPage, setCurrentPage] = useState("add");
+  const [currentPage, setCurrentPage] = useState(
+    items.length === 0 ? "add" : "view"
+  );
 
-  const addItem = (item)=>{
-    setItems(
-     [item, ...items]   
-    );
+  const addItem = (item) => {
+    const newItems = [item, ...items];
+    setItems(newItems);
+    localStorage.setItem("items", JSON.stringify(newItems));
   };
 
-  const showAlertBox =(id) =>{
+  const showAlertBox = (id) => {
     setAlertBoxStatus(true);
     setItemId(id);
   };
   const markAsDone = (id) => {
-      setItems(items.map(item => item.id === id ? {...item,isDone:true}: item )
-      .sort((a,b)=> a.isDone ? 1 :-1)); 
+    const newItems = items
+      .map((item) => (item.id === id ? { ...item, isDone: true } : item))
+      .sort((a, b) => (a.isDone ? 1 : -1));
+    setItems(newItems);
+    localStorage.setItem("items", JSON.stringify(newItems));
   };
 
-  const onYes = () =>{ 
-    setItems(items.filter(item => item.id !== itemId));
+  const onYes = () => {
+    const newItems = items.filter((item) => item.id !== itemId);
+    setItems(newItems);
+    localStorage.setItem("items", JSON.stringify(newItems));
     setAlertBoxStatus(false);
   };
-  const onNo = () =>{
+  const onNo = () => {
     setAlertBoxStatus(false);
   };
 
-  const handleAddClick = ()=>{
+  const handleAddClick = () => {
     setCurrentPage("add");
-  }; 
+  };
 
-  const handleViewClick = () =>{
+  const handleViewClick = () => {
     setCurrentPage("view");
   };
 
   return (
     <div className="App">
-      <Header 
+      <Header
         handleAddClick={handleAddClick}
         handleViewClick={handleViewClick}
         currentPage={currentPage}
       />
-      {currentPage === "add" && <AddPage onAddItem={addItem}/>}
-      {currentPage === "view" && <ViewPage items={items} onDelete={showAlertBox} onCheck={markAsDone}/>}
+      {currentPage === "add" && <AddPage onAddItem={addItem} />}
+      {currentPage === "view" && (
+        <ViewPage items={items} onDelete={showAlertBox} onCheck={markAsDone} />
+      )}
 
-      <Popup 
+      <Popup
         show={alertBoxStatus}
-        title="Delete a todo"
-        body="Are you sure?"
+        title="Confirm"
+        body={`Are you sure you want to permanently delete (${
+          items.find((item) => item.id === itemId)?.title
+        })`}
         onYes={onYes}
-        onNo={onNo}/>
+        onNo={onNo}
+      />
     </div>
   );
 }

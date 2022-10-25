@@ -1,16 +1,25 @@
 .header{
-    background-color: #d3d3d3;
+    box-shadow: 0px 3px 12px rgb(0 0 0 / 30%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3vmin 0;
+    margin-bottom: 5vmin;
+}
+.header h3{
+    text-align: center;
+}
+
+.header .container{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 3vmin 50vmin;
-    margin-bottom: 5vmin;
 }
 
 .header button{
     border: none;
     background: none;
-    margin-right: 3vmin;
+    margin-left: 3vmin;
     font-size: 2.5vmin;
     font-weight: bold;
     cursor: pointer;
@@ -19,5 +28,6 @@
 .header button.active{
     color: #000;
     background-color: aquamarine;
-    padding: 1vmin 2vmin;
+    padding: 1vmin 3vmin;
+    border-radius: 1vmin;
 }

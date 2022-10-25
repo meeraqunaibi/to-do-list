@@ -1,10 +1,10 @@
-import Form from '../form/form.component';
+import Form from "../form/form.component";
 import "./add-page.css";
-export default function addPage({onAddItem}) {
+export default function addPage({ onAddItem }) {
   return (
-    <div>
-       <Form onAddItem={onAddItem} />
-      <hr/>
+    <div className="add container">
+      <Form onAddItem={onAddItem} />
+      <hr />
     </div>
-  )
+  );
 }

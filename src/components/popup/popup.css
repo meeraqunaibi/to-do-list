@@ -26,22 +26,24 @@
     font-weight: bolder;
 }
 .popup__wrapper p{
-    font-size: 4vmin;
+    font-size: 3vmin;
 }
 .action__buttons{
     display: flex;
     gap:3vmin;
 }
 .action__buttons button{
-    padding: 3vmin;
-    font-size: 3.5vmin;
+    padding: 1vmin 3vmin;
+    font-size: 2.5vmin;
     color: #fff;
+    border: none;
+    border-radius: 1vmin;
     cursor: pointer;
 }
 
 .action__buttons button:first-child{
-    background-color: green;
+    background-color: #287eb8;
 } 
 .action__buttons button:nth-child(2){
-    background-color: crimson;
+    background-color: #f43926;
 } 
