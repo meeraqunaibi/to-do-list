@@ -37,8 +37,10 @@ const Form = (props) => {
     }
     return (
         <div className='form'>
+            <h1>Add To Do</h1>
             <form onSubmit={handleSubmit}>
                 <input
+                    required
                     placeholder='Title'
                     type="text"
                     name='title'
@@ -46,6 +48,7 @@ const Form = (props) => {
                     onChange={onTitleChange}
                 />
                 <select
+                    required
                     value={Categoryy}
                     name='category' /*onChange={onCategoryChange}*/
                     onChange={(e) => { setCategoryy(e.target.value) }}
@@ -63,7 +66,7 @@ const Form = (props) => {
                     <option value="personal">Personal</option> */}
                 </select>
                 <div className='chBox'>
-                    <input 
+                    <input checked={urgent}
                         onChange={(e) => { setUrgent(e.target.value) }}
                         type="checkbox"
                         name='urgent'

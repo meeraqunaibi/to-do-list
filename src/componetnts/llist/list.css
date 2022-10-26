@@ -7,7 +7,7 @@
 }
 
 .items_list h1 {
-  color: rgb(103, 123, 203);
+  color: rgb(0, 0, 0);
 }
 
 ol {
@@ -32,7 +32,7 @@ ol li {
 }
 
 .Todo_card {
-  background-color: rgb(103, 123, 203);
+  background-color: #6F38C5;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -98,7 +98,6 @@ button:active {
   display: flex;
   flex-direction: row;
 }
-
 
 /**/
 /*

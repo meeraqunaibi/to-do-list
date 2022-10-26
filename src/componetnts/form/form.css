@@ -18,9 +18,9 @@ input.largerCheckbox {
 
     
 }
-select,input{
-    color: white;
-    background-color:rgb(103, 123, 203);
+select,input,h1{
+    color: black;
+    
 }
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: white;
