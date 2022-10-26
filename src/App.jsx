@@ -14,7 +14,7 @@ function App() {
     items.length === 0 ? "add" : "view"
   );
   const addNewItem = (item) => {
-    let newItems = [...items, item];
+    let newItems = [...items, item].sort((a, b) => a.isDone - b.isDone);
     setItems(newItems);
     localStorage.setItem("to-do-list", JSON.stringify(newItems));
     setCurrentPage("view");
@@ -26,9 +26,9 @@ function App() {
     localStorage.setItem("to-do-list", JSON.stringify(newItems));
   };
   const onFinish = (id) => {
-    const newItems = items.map((item) =>
-      item.id === id ? { ...item, isDone: true } : item
-    );
+    const newItems = items
+      .map((item) => (item.id === id ? { ...item, isDone: true } : item))
+      .sort((a, b) => a.isDone - b.isDone);
     setItems(newItems);
     localStorage.setItem("to-do-list", JSON.stringify(newItems));
   };
