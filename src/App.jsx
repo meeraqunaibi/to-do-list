@@ -10,7 +10,9 @@ function App() {
   const [id, setId] = useState();
   const [currentPage, setCurrentPage] = useState("");
   const addNewItem = (item) => {
-    setItems([...items, item]);
+    let newItems = [...items, item];
+    setItems(newItems);
+    localStorage.setItem("to-do-list", JSON.stringify(newItems));
   };
   const onDelete = (id) => {
     const newItems = items.filter((item) => item.id !== id);
