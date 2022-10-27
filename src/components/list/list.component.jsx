@@ -16,7 +16,7 @@ const List = (props) => {
     <div className="items-list"> 
       <ul >
         {props.items.map((item, index) => (
-          <li key={item.id} className={`rowlist row ${item.urgent?'urgent':''}`}>
+          <li key={item.id} className={`rowlist row ${item.urgent?'urgent':''}  ${item.isDone?'done':''}`}>
             <div className="data">
             <h2>
               {/* {index + 1}
@@ -26,7 +26,9 @@ const List = (props) => {
             <span>{Catergories.filter(cat=>cat.value ===item.category)[0]?.label}</span> {" "}
             </div>
             {/* {item.urgent ? "URGENT" : "non urgent"}/ */}
-            <button  onClick={()=>props.ondelete(item.id)}>Delete</button>
+         
+            <button  onClick={()=>( props.ondelete(item.id))}>Delete</button>
+            <button onClick={() => props.done(item.id)} disabled={item.isDone}>Done</button>
           </li>
         ))}
       </ul>
