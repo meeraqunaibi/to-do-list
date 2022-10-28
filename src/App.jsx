@@ -6,7 +6,7 @@ import AddItemPage from './pages/add-item/add-item.component';
 import Header from './components/header/header.component';
 
 function App() {
-    const [items, setItems] = useState(JSON.parse(localStorage.getItem('toDoList')) || '[]');
+    const [items, setItems] = useState(JSON.parse(localStorage.getItem('toDoList')) || []);
     const [currentPage, setCurrentPage] = useState(items.length>0?"view":"add");
     const [item, setItem] = useState(undefined);
     const addItem = (item) => {
@@ -16,7 +16,7 @@ function App() {
         ].sort((a, b) => b.urgent - a.urgent);
         setItems(newItems);
 
-        localStorage.setItem("toDoList", JSON.stringify(items));
+        localStorage.setItem("toDoList", JSON.stringify(newItems));
     }
     const deleteItem = (id) => {
         const newItems = items.filter(item => item.id !== id);
