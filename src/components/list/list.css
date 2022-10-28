@@ -1,4 +1,28 @@
+*{
+    margin: 0;
+    padding:0 ;
+}
 .items-list {
-    border-top: 2px solid #e3e3e3;
     padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ul{
+    width: 40%;
+    list-style-type: none;
+}
+li{
+    display: flex;
+    background-color: #e3e3e3;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 5px solid green;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+}
+.item.urgent{
+    border-left: 5px solid firebrick;
 }

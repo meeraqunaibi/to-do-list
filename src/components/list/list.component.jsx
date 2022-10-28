@@ -1,8 +1,9 @@
 import './list.css';
-
+import Item from './item.component';
 /** 
  * @param {{
  * items: {
+ *   id:new Date();
  *   title: event.target.title.value,
  *   category: event.target.category.value,
  *   urgent: event.target.urgent.checked
@@ -10,17 +11,20 @@ import './list.css';
  * }} props
  */
 const List = (props) => {
-  return (
-    <div className='items-list'>
-      <ul>
-        {
-          props.items.map((item, index) => <li key={index}>
-            {item.title} - {item.category} - {item.urgent ? 'URGENT' : 'non urgent'}
-          </li>)
-        }
-      </ul>
-    </div>
-  )
+    return (
+        <div className='items-list'>
+            <ul> 
+            {
+              props.items.map(item => 
+                <Item key={item.id} item={item} 
+                onDelete={props.deleteItem}
+                onFinish={props.finishItem}
+                />
+             )
+            }
+            </ul>
+        </div>
+    )
 };
 
 export default List;

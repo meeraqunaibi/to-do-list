@@ -1,18 +1,28 @@
 import { useState } from 'react';
+import CAT_OPTIONS from "../constants/constant";
 import './form.css'
 const Form = (props) => {
-  const [title, setTitle] = useState('Go Swim');
+  const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
   const [isUrgent, setIsUrgent] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const newItem = {
+      id:new Date(),
+      isDone:false,
       title: event.target.title.value,
       category: event.target.category.value,
       urgent: event.target.urgent.checked
     }
-
+    if(newItem.title.trim()===""){
+      alert("Please fill the title with suitable data");
+      return
+    }
+    if(newItem.category.trim()===""){
+      alert("Please fill the category with suitable data");
+      return
+    }
     props.onAddItem(newItem);
 
     setTitle("");
@@ -44,9 +54,11 @@ const Form = (props) => {
           onChange={(e) => setCategory(e.target.value)}
         >
           <option value="" disabled>Select</option>
-          <option value="work">Work</option>
-          <option value="home">Home</option>
-          <option value="personal">Personal</option>
+          {
+              CAT_OPTIONS.map((item,index)=>(
+                <option value={item.title} key={index}>{item.label}</option>
+              ))
+            }
         </select>
         <input
           name="urgent"

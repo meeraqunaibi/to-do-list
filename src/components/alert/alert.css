@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding :0;
+}
+.alert{
+    position: absolute;
+    inset: 34% 20%;
+    border: 1px solid #444;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 15px;
+    background-color: antiquewhite;
+}
+.decision{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 10vw;
+    margin-top: 15px;
+}
+.decision button{
+    background-color: aliceblue;
+    padding: 10px 15px;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+}
