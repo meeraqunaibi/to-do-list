@@ -62,6 +62,7 @@ settitle(title);
         </select>
         <input type="checkbox" name='urgent' checked={isurgent} onChange={(e) => setisurgent(e.target.checked)} />
         <label >urgent</label>
+        <div className='separator'></div>
         <input type="submit" value='addtolist' />
       </form>
 
