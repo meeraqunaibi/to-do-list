@@ -1,4 +1,4 @@
-import CATEGORIES_OPTION from '/Users/manalamro/react-todo-app/src/constants/data.js'
+import CATEGORIES_OPTIONS from '../../constants/data';
 import deleteIcon from '../../assets/delete.svg';
 import checkIcon from '../../assets/check.svg';
 
@@ -18,7 +18,6 @@ const Item = (props) => {
 
   return (
     <li
-    //condition styling
       className={`item ${item.urgent ? 'urgent' : ''}`}>
       <div
         className="data"
@@ -27,7 +26,7 @@ const Item = (props) => {
         <h2>{item.title}</h2>
         <span>
           {
-            CATEGORIES_OPTION.filter(cat => cat.value === item.category)[0]?.lable
+            CATEGORIES_OPTIONS.filter(cat => cat.value === item.category)[0]?.lable
           }
         </span>
       </div>
