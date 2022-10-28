@@ -1,0 +1,23 @@
+header {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 10px 20px;
+  background-color: cornflowerblue;
+  border-radius: 0;
+}
+.btns {
+  display: flex;
+  gap: 20px;
+}
+.btns button {
+  background-color: rgb(232 149 96 / 92%);
+  color: #4a3a3a;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 15px;
+  border-radius: 10px;
+}

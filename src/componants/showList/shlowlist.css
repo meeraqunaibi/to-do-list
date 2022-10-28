@@ -1,0 +1,90 @@
+.showList {
+  /* margin: 50px; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  box-sizing: border-box;
+  text-align: left;
+}
+.listItem {
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 70%;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-left: 7px solid rgb(157, 217, 154);
+}
+.personal {
+  background-color: rgb(237 217 255);
+}
+.home {
+  background-color: #ffd4e7;
+}
+.work {
+  background-color: #e5edff;
+}
+.school {
+  background-color: #fff4ce;
+}
+.category {
+  color: #726d6d;
+}
+.col1 {
+  display: flex;
+  flex-direction: column;
+}
+.urgent {
+  border-left-color: rgb(234 23 66);
+}
+.col2 {
+  gap: 15px;
+  display: flex;
+}
+.col2 * {
+  cursor: pointer;
+}
+.col2 .trash {
+  color: red;
+  font-weight: bold;
+}
+.col2 .check {
+  color: green;
+  font-weight: bold;
+}
+
+.done {
+  color: #fff;
+  border-left: none;
+  position: relative;
+  background-color: #002e3b;
+}
+.done::before {
+  content: "";
+  background-color: rgb(157, 217, 154);
+  position: absolute;
+  width: 95%;
+  height: 5px;
+  top: 50%;
+  left: 2.5%;
+}
+.category.done {
+  color: #fff;
+}
+
+button {
+  background-color: inherit;
+  width: fit-content;
+  border: none;
+  padding: 0;
+  cursor: auto;
+}
+.done .col2 button * {
+  cursor: auto;
+}
+.deletepopup {
+  width: 100%;
+}
