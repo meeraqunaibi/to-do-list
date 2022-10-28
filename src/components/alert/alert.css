@@ -4,9 +4,10 @@
 }
 .alert{
     position: absolute;
-    inset: 34% 20%;
+    inset: 35% 24%;
     border: 1px solid #444;
     height: 20vh;
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;

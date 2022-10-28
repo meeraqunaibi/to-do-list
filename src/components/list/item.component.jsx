@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Alert from "../alert/alert.component";
 
+
 /** 
  * @param {{
  * item: {
@@ -22,12 +23,13 @@ const Item = (props) => {
       <div
         className="data"
         style={{textDecoration: item.isDone?'line-through':'none'}}
-      >
+      >    
         <h2>{item.title}</h2>
+        <h3>{item.category}</h3>
       </div>
       <div className="action">
-      <button onClick={()=>props.onDelete(item)}>Delete</button>
-      <button onClick={()=> props.onFinish(item.id)} disabled={item.isDone}>Done</button>
+      <button onClick={()=>props.onDelete(item)}>🗑️</button>
+      <button className={`${item.isDone ? 'done' : ''}`} onClick={()=> props.onFinish(item.id)} disabled={item.isDone}>✔️</button>
  
       </div>
 

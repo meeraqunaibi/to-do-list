@@ -1,10 +1,9 @@
 import {useState} from 'react';
 import './App.css';
-// import Form from './components/form/form.component';
-// import List from './components/list/list.component';
 import Alert from './components/alert/alert.component';
 import ViewItemsPage from './pages/view-items/view-item.page';
 import AddItemPage from './pages/add-item/add-item.component';
+import Header from './components/header/header.component';
 
 function App() {
     const [items, setItems] = useState(JSON.parse(localStorage.getItem('toDoList')) || '[]');
@@ -34,33 +33,24 @@ function App() {
         localStorage.setItem("toDoList", JSON.stringify(newItems));
 
     }
-
     const displayAlert = (item) => {
         item !== undefined ? setItem(item) : setItem(undefined);
     }
+    const switchPage=(page)=>{
+        setCurrentPage(page);
+    }
     return (
-        <div className="App">
-            <div className='header'>
-                <h1>R-ToDOApp</h1>
-                <button className={
-                        currentPage === "add" ? 'active' : ""
-                    }
-                    onClick={
-                        () => setCurrentPage("add")
-                }>Add Item Page</button>
-                <button className={
-                        currentPage === "view" ? 'active' : ""
-                    }
-                    onClick={
-                        () => setCurrentPage("view")
-                }>View Items Page</button>
+        <div className={`App`}>
+            <div className={`item ${item !== undefined ? 'background' : ''}`}> 
+                <Header onSwitchPage={switchPage} currentPage={currentPage}/>
 
                 {
                 currentPage === "add" &&< AddItemPage addItem = {
                     addItem
                 } />
             }
-                {
+            
+            {
                 currentPage === "view" &&< ViewItemsPage items = {
                     items
                 } displayAlert = {
@@ -68,8 +58,9 @@ function App() {
                 }
                 finishItem = {
                     finishItem
-                } />
-            } </div>
+                }  />
+            } 
+              </div>
 
             {
             item && <Alert onDelete={deleteItem}

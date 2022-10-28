@@ -11,7 +11,7 @@ const Form = (props) => {
     const newItem = {
       id:new Date(),
       isDone:false,
-      title: event.target.title.value,
+      title: event.target.title.value.charAt(0).toUpperCase() + event.target.title.value.slice(1).toLowerCase(),
       category: event.target.category.value,
       urgent: event.target.urgent.checked
     }
