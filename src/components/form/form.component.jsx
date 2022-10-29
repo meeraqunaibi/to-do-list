@@ -1,77 +1,69 @@
-import { useState } from 'react';
+import { useState } from "react";
+import CATEGORY_OPTION from "../constant/data";
 import './form.css'
 const Form = (props) => {
-  const [title, setTitle] = useState('Go Swim');
+  const [title, setTitle] = useState("");
   const [category, setCategory] = useState('');
-  const [isUrgent, setIsUrgent] = useState(false);
+  const [isurgent, setUrgent] = useState(false);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const newItem = {
-      title: event.target.title.value,
-      category: event.target.category.value,
-      urgent: event.target.urgent.checked
-    }
-
-    props.onAddItem(newItem);
-
-    setTitle("");
-    setCategory("");
-    setIsUrgent(false);
-  }
-
-  const onTitleChange = (event) => {
-    let title = event.target.value;
-    title = title.replace(".", " ");
-    title = title.replace("-", " ");
+  const onTitleChange = (e) => {
+    let title = e.target.value;
     setTitle(title);
   }
 
-  return (
-    <div className="form">
-      <form onSubmit={handleSubmit}>
-        <input
-          placeholder="Title"
-          name="title"
-          type="text"
-          value={title}
-          onChange={onTitleChange}
-        />
-        <select
-          name="category"
-          placeholder="Category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        >
-          <option value="" disabled>Select</option>
-          <option value="work">Work</option>
-          <option value="home">Home</option>
-          <option value="personal">Personal</option>
-        </select>
-        <input
-          name="urgent"
-          type="checkbox"
-          checked={isUrgent}
-          onChange={(e) => setIsUrgent(e.target.checked)}
-        />
-        <label>Urgent</label>
-        <div className="separator" />
-        <input type="submit" value="Add to List" />
-      </form>
-      {/* <div>
-        <ul>
-          {name.map((item, index) => {
-            return (
-              <li key={index}>
-                {item} - {item.toLocaleUpperCase()}
-              </li>
-            );
-          })}
-        </ul>
-      </div> */}
+  const onhandelsubmit = (e) => {
+    
+    console.log("hi world")
 
-    </div>
+    const newItem = {
+      id: Date.now(),
+      isDone:false,
+      title:title,
+      category: category,
+      isurgent:isurgent
+
+    };
+    console.log(newItem);
+    props.onAddItem(newItem);
+    // e.preventDefualt();
+  }
+
+  return (
+    <form className="form">
+      <input
+        placeholder="Title"
+        value={title}
+        type='text'
+        onChange={onTitleChange}
+      />
+      <select
+        placeholder="category"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+      ><option value="">Select</option>
+        {
+          CATEGORY_OPTION.map(item =>
+            <option
+              key={item.value}
+              value={item.value}
+            >{item.label}</option>
+          )
+        }
+      </select>
+      <input
+        placeholder="urgent"
+        type='checkbox'
+        onChange={(e) => setUrgent(e.target.value)}
+        isurgent='cheacked'
+      />
+      <label>Urgent</label>
+
+      <button value='Add to List' type="button"  className="button-1"
+       onClick={(event)=>onhandelsubmit(event)}>Add to list</button>
+    </form>
   )
-};
+}
 
 export default Form;
+
+

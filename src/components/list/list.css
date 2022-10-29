@@ -1,4 +1,75 @@
-.items-list {
-    border-top: 2px solid #e3e3e3;
-    padding: 10px;
+.item-list {
+    padding: 0px;
+}
+
+.item-list ul {
+    padding: 0;
+    margin: 0;
+   
+}
+
+.item-list .item {
+    list-style-type: none;
+    background-color: #e3e3e3;
+    margin-bottom: 4px;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: center;
+    border-left: 6px solid #a3d31d;
+    border-radius: 5px;
+}
+
+.item-list .item .data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.item-list .item .actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.items-list .item h2 {
+    font-size: 16px;
+    color: #444;
+    margin: 0;
+    margin-bottom: 3px;
+}
+
+.item-list .item span {
+    font-size: 13px;
+    color: #888;
+}
+
+.item-list .item.urgent {
+    border-left-color: #f41a1a;
+}
+
+.item-list .item .action {
+    display: flex;
+    flex-direction: row;
+}
+
+.item-list .item .action button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 0;
+}
+
+.item-list .item .action button:not([disabled]):hover {
+    opacity: 0.8;
+}
+
+.item-list .item .action button:not([disabled]):active {
+    position: relative;
+    right: -1px;
+    bottom: -1px;
+}
+
+.item-list .item .action button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
