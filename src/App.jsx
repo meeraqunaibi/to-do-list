@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 import Header from './components/header/header.component';
@@ -6,8 +6,20 @@ import AddItemPage from './pages/add-item/add-item.page';
 import ViewItemsPage from './pages/view-items/view-items.page';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('add');  // Either add or view
-  const [items, setItems] = useState(JSON.parse(localStorage.getItem('todoList') || '[]'));
+  const [currentPage, setCurrentPage] = useState('view');  // Either add or view
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    console.log("Fetching Items...");
+    setTimeout(() => {
+      const items = JSON.parse(localStorage.getItem('todoList') || '[]');
+      setItems(items);
+      setLoading(false);
+    }, 1000);
+
+  }, []);
 
   const addItem = (item) => {
     const newItems = [...items, item];
@@ -37,6 +49,7 @@ function App() {
         {currentPage === 'add' && <AddItemPage addItem={addItem} />}
         {currentPage === 'view' &&
           <ViewItemsPage
+            loading={loading}
             items={items}
             deleteItem={deleteItem}
             finishItem={finishItem} />
