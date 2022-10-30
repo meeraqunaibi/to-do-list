@@ -5,6 +5,8 @@
 }
 .list {
     padding: 10px;
+    font-size: 30px;
+    margin-top: 50px;
 }
 
 .list ul {
@@ -43,8 +45,8 @@
 }
 
 .list .item span {
-    font-size: 13px;
-    color: #888;
+height: 40px;    width: 300px;
+    color: rgb(85, 87, 88);
 }
 
 .list .item.urgent {

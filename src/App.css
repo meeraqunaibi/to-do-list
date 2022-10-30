@@ -3,9 +3,47 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.container {
-  width: 70vw;
+
+.modal, .overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.overlay {
+  background: rgba(49,49,49,0.8);
+}
+.modal-content {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: #f1f1f1;
+  padding: 14px 28px;
+  border-radius: 3px;
+  max-width: 600px;
+  min-width: 300px;
+}
+
+.bu{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 10vw;
+  margin-top: 15px;
+}
+.bu button{
+  background-color: rgb(175, 238, 150);
+  padding: 10px 15px;
+  border: 1px solid rgb(39, 38, 38);
+  border-radius: 10px;
+  cursor: pointer;
 }

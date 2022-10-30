@@ -6,7 +6,7 @@ import Item from './item.component';
 const List = (props) => {
   return (
     <div className='list'>
-      items of list
+      Items Of List
       <ul>
         {
           props.items.map(item => (

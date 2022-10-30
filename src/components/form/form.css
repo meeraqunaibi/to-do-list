@@ -20,13 +20,13 @@ form input[type="checkbox"] {
 
 form input[type="submit"] {
     border: 0;
-    background-color: #7f7f7f;
+    background-color:#86dada;
     color: white;
     cursor: pointer;
 }
 
 form .separator {
     margin: 0 15px;
-    border-right: 1px solid #c3c3c3;
+    border-right: 1px solid #3b8ab8;
     height: 51px;
 }

@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     padding: 0 calc((100% - 70vw) / 2);
-    background-color: #3498DB;
+    background-color: #ea82f3;
     box-sizing: border-box;
     align-items: center;
   }
@@ -31,7 +31,7 @@
   }
   
   .header nav button.active {
-    background-color: #F1C40F;
+    background-color: #a9e6e6;
   }
   
   .header nav button:hover {
