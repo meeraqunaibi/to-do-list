@@ -23,7 +23,8 @@ const List = (props) => {
                 <span>{category_items.filter(cat => cat.value === item.category)[0]?.label}</span>
               </div>
               <div className="action">
-                <button className='x' onClick={ () => props.onDelate(item.id)}>X</button>
+                {/* <button className='x' onClick={ () => props.onChick(item.id)}>X</button> */}
+                <button className='x' onClick={ () => props.onDelate(item.id)} >X</button>
                 <button className='D' onClick={ () => props.onComplete(item.id)}>Done</button>
               </div>
             </li>)

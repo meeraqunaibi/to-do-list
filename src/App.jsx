@@ -11,6 +11,7 @@ function App() {
   }
 
   const delateItem = (id) => {
+    // alert("you sure delete this task")
     const newItemsData = items.filter(it => it.id !== id);
     setItems(newItemsData);
   }
@@ -20,11 +21,33 @@ function App() {
     setItems(newitem);
   }
 
+  const checkDelete = (id) => {
+    return (
+      <div className="box">
+        <div className="box">
+          <div>You sure delete this task</div>
+          <button
+            // onClick={() => setDeletePoopUp(false)}
+            className="D"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={delateItem}
+            className="x"
+          >
+            delete
+          </button>
+        </div>
+      </div>
+    )
+  };
+
   return (
     <div className="App">
       <h1>R-ToDOApp (hallow every day)</h1>
       <Form onAddItem={addItem} />
-      <List onDelate={delateItem} onComplete={Complete} items={items} />
+      <List onChick={checkDelete} onDelate={delateItem} onComplete={Complete} items={items} />
     </div>
   );
 }
