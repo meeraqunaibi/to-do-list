@@ -1,4 +1,4 @@
-import Form from "../../form/form.component";
+import Form from "../../../components/form/form.component";
 
 const FormPage = (props) => {
   return (<Form addItem={props.addItem} />);

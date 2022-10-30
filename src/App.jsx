@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
-import FormPage from "./components/pages/formpage/form.page";
-import LIstViewPage from "./components/pages/listviewpage/listview.page";
+import FormPage from "./pages/pages/formpage/form.page";
+import LIstViewPage from "./pages/pages/listviewpage/listview.page";
 import PopUp from "./components/popup.componant/popup ,componant";
+import Header from "./components/header/header";
 
 function App() {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(
+    JSON.parse(localStorage.getItem("ToDoTtems")) || []
+  );
   const [currentpage, changepage] = useState("form");
   const [popup, changepopup] = useState(false);
   const [deleteornot, changedelete] = useState(false);
@@ -14,13 +17,19 @@ function App() {
   const [iddelete, changeid] = useState();
 
   const addItem = (item) => {
-    setItems([...items, item]);
+    const newItems=[...items, item];
+    setItems(newItems);
+    // sorturgrnt(newItems);
   };
+
+  // const sorturgrnt=(Items)=>{
+  //   const newItems = [...Items].sort((a, b) => (a.urgent > b.urgent ? -1 : 1));
+  //   setItems(newItems);
+  // }
 
   const deletefun = (id) => {
     changeid(id);
     if (deleteornot === true) {
-      
       const new_items = items.filter((item) => item.id !== id);
       setItems(new_items);
       changedelete(false);
@@ -38,46 +47,45 @@ function App() {
     changepopup(false);
     changedelete(true);
     deletefun(iddelete);
-
   };
 
-  const sort=(lola)=>{
-    const newItems = [...lola].sort((a, b) =>
-    a.isDone > b.isDone ? 1 : -1,
-  );
+  const sort = (lola) => {
+    const newItems = [...lola].sort((a, b) => (a.isDone > b.isDone ? 1 : -1));
+   
     setItems(newItems);
+    // sorturgrnt(newItems);
   };
 
-
+ 
   const donefun = (id) => {
-    const newItems = items.map(item => item.id === id ? { ...item, isDone: true } : item);
-    
+    const newItems = items.map((item) =>
+      item.id === id ? { ...item, isDone: true } : item
+    );
+
     setItems(newItems);
     sort(newItems);
-    
-   
-  
   };
 
-
+  useEffect(() => {
+    {
+      items.length === 0 ? (changepage("form")) : (changepage("listview"));
+    }
+  }, []);
 
   return (
     <div className="App">
-      <h1>To Do List (tuqa)</h1>
+      {localStorage.setItem("ToDoTtems", JSON.stringify(items))}
+      <Header changepage={changepage} page={currentpage} />
+
       <div className="appbody">
-      
         {/* <Form addItem={addItem} />
         <br/>
         <hr/>
         <List items={items} ondelete={deletefun} /> */}
-        <div>
-          <button onClick={() => changepage("form")}>to do list form</button>
-          <button onClick={() => changepage("listview")}>veiw list </button>
-        </div>
 
         {currentpage === "form" && <FormPage addItem={addItem} />}
         {currentpage === "listview" && (
-          <LIstViewPage items={items} ondelete={deletefun} done={donefun}   />
+          <LIstViewPage items={items} ondelete={deletefun} done={donefun} />
         )}
 
         {console.log(deleteornot, popup)}
@@ -87,7 +95,6 @@ function App() {
             className="popup"
             handleClose={handleClose}
             handledelete={handledelete}
-        
           />
         )}
       </div>
