@@ -10,6 +10,7 @@ import category_items from '../category/catedory'
  * }} props
  */
 const List = (props) => {
+
   return (
     <div className='items-list'>
       <ul>
@@ -18,18 +19,18 @@ const List = (props) => {
             <li key={index}
               className={`item ${item.urgent ? 'urgent' : ''}`}>
 
-              <div className="data" style={{textDecoration:item.isDone?'line-through':'none'}}>
+              <div className="data" style={{ textDecoration: item.isDone ? 'line-through' : 'none' }}>
                 <h2>{item.title}</h2>
                 <span>{category_items.filter(cat => cat.value === item.category)[0]?.label}</span>
               </div>
               <div className="action">
-                {/* <button className='x' onClick={ () => props.onChick(item.id)}>X</button> */}
-                <button className='x' onClick={ () => props.onDelate(item.id)} >X</button>
-                <button className='D' onClick={ () => props.onComplete(item.id)}>Done</button>
+                <button className='x' onClick={() => props.onDelate(item.id)} >X</button>
+                <button className='D' onClick={() => props.onComplete(item.id)}>Done</button>
               </div>
             </li>)
         }
       </ul>
+
     </div>
   )
 };
