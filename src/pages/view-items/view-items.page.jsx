@@ -8,7 +8,6 @@ const ViewItemsPage = (props) => {
   const [time, setTime] = useState(new Date());
 
   const updateTime = () => {
-    console.log("Setting New Time..." + time.toString());
     setTime(new Date());
   }
   // This code will run one time only on component mount
@@ -31,9 +30,9 @@ const ViewItemsPage = (props) => {
         props.items.length > 0
           ? <List items={props.items} onDelete={props.deleteItem} onFinish={props.finishItem} />
           : props.loading
-            ? <h2 style={{ textAlign: 'center', marginTop: '40px' }}>
+            ? <div style={{ textAlign: 'center', marginTop: '40px' }}>
               <img src={loadingImg} alt="loading" width={120} />
-            </h2>
+            </div>
             : <h2>No Items Added!</h2>
       }
     </div>

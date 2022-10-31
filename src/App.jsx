@@ -5,41 +5,42 @@ import Header from './components/header/header.component';
 import AddItemPage from './pages/add-item/add-item.page';
 import ViewItemsPage from './pages/view-items/view-items.page';
 
+const ReadItems = () => JSON.parse(localStorage.getItem('todoList') || '[]');
+
 function App() {
   const [currentPage, setCurrentPage] = useState('view');  // Either add or view
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
     console.log("Fetching Items...");
+
     setTimeout(() => {
-      const items = JSON.parse(localStorage.getItem('todoList') || '[]');
+      const items = ReadItems();
       setItems(items);
       setLoading(false);
     }, 1000);
 
   }, []);
 
-  const addItem = (item) => {
-    const newItems = [...items, item];
-    setItems(newItems);
+  useEffect(() => {
+    if (items !== null) {
+      console.log("Items has changed!");
+      localStorage.setItem('todoList', JSON.stringify(items));
+    }
+  }, [items]);
 
-    localStorage.setItem('todoList', JSON.stringify(newItems));
+  const addItem = (item) => {
+    setItems([...items, item]);
   }
 
   const deleteItem = (id) => {
-    const newItems = items.filter(item => item.id !== id);
-    setItems(newItems);
-
-    localStorage.setItem('todoList', JSON.stringify(newItems));
+    setItems(items?.filter(item => item.id !== id));
   }
 
   const finishItem = (id) => {
-    const newItems = items.map(item => item.id === id ? { ...item, isDone: true } : item);
-    setItems(newItems);
-
-    localStorage.setItem('todoList', JSON.stringify(newItems));
+    setItems(items?.map(item => item.id === id ? { ...item, isDone: true } : item));
   }
 
   return (
@@ -50,7 +51,7 @@ function App() {
         {currentPage === 'view' &&
           <ViewItemsPage
             loading={loading}
-            items={items}
+            items={items || []}
             deleteItem={deleteItem}
             finishItem={finishItem} />
         }
