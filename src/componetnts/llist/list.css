@@ -83,6 +83,17 @@ button:active {
   transform: translateY(4px);
 }
 
+.mainpop {
+  width: 100%;
+  height: 100%;
+  transition-property: initial;
+  position: absolute;
+  display: grid;
+  background-color: hsl(0, 61%, 49%);
+  place-items: center;
+  z-index: 1;
+}
+
 #false {
   color: white;
   background-color: red;
