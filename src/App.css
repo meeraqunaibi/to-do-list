@@ -1,3 +1,209 @@
 .App {
+  height: 100vh;
+  width: 100vw;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #FBF2CF;
+}
+
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+form {
+  width: 60%;
+  height: 10%;
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+form input {
+  display: inline-block;
+  width: 85%;
+  height: 35%;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+form select {
+  width: 70%;
+  height: 45%;
+  margin-left: 40px;
+  border-radius: 5px;
+}
+
+form button {
+  width: 50%;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  display: inline-block;
+  font-weight: 600;
+  background-color: #C6EBC5;
+}
+
+ul {
+  width: 80%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+}
+
+ul li {
+  width: 100%;
+  height: 20%;
+  background-color: #FA7070;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 3px;
+  border-radius: 6px;
+  border-left: 8px #61dafb solid;
+  font-size: medium;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.unr {
+  border-left: 8px #C6EBC5 solid;
+}
+
+
+ul li button {
+
+  background: none;
+  border: none;
+  margin-right: 10px;
+  font-size: medium;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+span button:not([disabled]):hover {
+  opacity: 0.8;
+
+}
+
+span button:not([disabled]):active {
+  position: relative;
+  right: -1px;
+  bottom: -1px;
+
+}
+
+span button[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+
+}
+
+ul li span {
+  margin-left: 10px;
+
+}
+
+.popup {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #7f7a7577;
+  width: 100vw;
+  height: 100vh;
+}
+
+.popup h2 {
+  font-weight: 700;
+  padding: 20px;
+  border: 2px solid;
+}
+
+.popup button {
+  background: none;
+  border: none;
+  margin-right: 10px;
+  font-size: medium;
+  font-weight: 600;
+  cursor: pointer;
+
+}
+
+.header {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #C6EBC5;
+  padding: 5px;
+}
+
+.header h1 {
+  margin-left: 5px;
+  text-shadow: #363434 0px 0px 5px;
+}
+
+nav {
+  width: 30%;
+  height: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav button {
+  width: 40%;
+  height: 60%;
+  border: none;
+  border-radius: 5px;
+  font-weight: 700;
+  background-color: #FBF2CF;
+
+}
+
+nav button.active {
+  background-color: #b377de;
 }
