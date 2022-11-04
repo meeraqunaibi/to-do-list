@@ -2,12 +2,29 @@ import "./list.css";
 const List = (props) => {
   return (
     <div className="list">
-      The list of items
-      <ul>
+      <ul className="ul">
         {
-        props.items.map((item , index)=>
-        <li key={index}>{item.title} - {item.category} - {item.urgent? 'urgent' : 'Not urgent'} </li>) //negative of index ??
-
+         
+            props.items.map((item, index) => (
+               <div className="li-list">
+              <li  key={index} className={item.urgent ? "urgent":""}>
+                {item.title} - {item.category}
+                <button
+                  className="button"
+                  onClick={() => props.onDelete(item.id)}
+                >
+                  delete
+                </button>
+                <button
+                  className="button"
+                  onClick={() => props.onfinish(item.id)}
+                  disabled={item.isDone}
+                >
+                  done
+                </button>
+              </li>
+              </div>
+            ))
         }
       </ul>
     </div>

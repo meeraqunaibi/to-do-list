@@ -1,6 +1,33 @@
 .list {
     color: black;
     font-size: 20px;
-    text-shadow: 2px 2px 8px rgb(163, 68, 91);;
+    text-shadow: 2px 2px 8px rgb(163, 68, 91);
     margin: 27px;
+}
+.button{
+    margin-left: 84px;
+    padding: 5px;
+    color: red;
+    width: 68px;
+    height: 27px;
+    background-color: #FFF;
+}
+.ul {
+    list-style-type: none;
+}
+
+.li-list{
+    list-style-type: none;
+    background-color: #e3e3e3;
+    margin-bottom: 4px;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    
+    border-radius: 5px;
+    width: 600px;
+    align-items: center;
+}
+.li-list .urgent{
+    box-shadow: 2px 1px 8px rgb(163, 68, 91);
 }

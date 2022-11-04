@@ -1,3 +1,52 @@
 .App {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+.header { 
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  background-color: #b2c0ca;
+  box-sizing: border-box;
+  color: #fff;
+  margin-top: 10px;
+}
+.header h1 {
+  font-weight: bold;
+  color: #121212;
   text-align: center;
+  text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
+    0px -4px 10px rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  margin-left: 100px;
+  font-size: 28px;
+  margin-top: 22px;
+
+
+}
+.header .but{
+  display: flex;
+  justify-content: space-between;
+  margin-left: 144px;
+  margin-bottom: 29px;
+}
+.header .but  button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #2C3E50;
+  font-weight: 600;
+  margin-left: 30px;
+  margin-top: 30px;
+  border-radius: 5px;
+  padding: 5px;
+}
+.header .but  button.active {
+  background-color: palevioletred;
 }

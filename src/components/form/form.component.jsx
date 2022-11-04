@@ -1,4 +1,6 @@
 import { useState } from "react";
+import optionsCat from "../constants/data";
+
 import "./form.css";
 const Form = (props) => {
     const [title , setTitle]=useState("Do homework");
@@ -7,9 +9,11 @@ const Form = (props) => {
     const handelSubmit=(e)=>{
      e.preventDefault();
      const newItem = {
+        id : new Date(),
         title : e.target.title.value , 
         category : e.target.category.value ,
-        urgent : e.target.urgent.checked
+        urgent : e.target.urgent.checked,
+        isDone: false,
      }
      props.onAddItem(newItem);
      setTitle("");
@@ -33,10 +37,14 @@ const Form = (props) => {
          />
         <select name="category" value={category} 
         onChange={(e)=>setCategory(e.target.value)}>
-        <option  value="select">select</option>
-          <option value="work">work</option>
-          <option value="home">home</option>
-          <option value="personal">personal</option>
+  
+        <option value='' disabled>select1</option>
+        {
+             optionsCat.map((item , index) =>{
+              return (<option key={item.value + index} value={item.value}>{item.label}</option>)
+            })
+             
+        }
         </select>
         <input name="urgent" type="checkbox" checked={urgent}
          onChange={(e)=>setUrgent(e.target.value)}></input>
