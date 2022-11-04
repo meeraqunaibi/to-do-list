@@ -1,4 +1,19 @@
-.form input,.form select{
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10%;
+    border: 1px solid black;
+    padding: 10px;
+}
+.form input,.form select,.from  {
     padding: 10px;
     margin: 10px;
+    border-radius: 10px;
+    color: rgb(82, 35, 130);
+    background-color: rosybrown;
+    border: 2px solid black;
+   
 }
+
+

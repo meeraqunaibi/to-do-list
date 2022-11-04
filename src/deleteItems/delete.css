@@ -1,0 +1,15 @@
+.modal_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(160, 115, 115);
+    border: 2px solid rgb(38, 3, 37);
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    width: 40vw;
+    height: 20vh;
+    flex-direction: column;
+
+}

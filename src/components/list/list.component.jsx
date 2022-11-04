@@ -1,6 +1,10 @@
 import './list.css';
+// import Categories_Options from '../../constants/data';
+
+import Item from './item.component';
+
 const List = (props) => {
-    console.log(props.items);
+    // console.log(props.items);
     /** @param{{
       items:{
                 title:event.target.title.value,
@@ -13,11 +17,18 @@ const List = (props) => {
         <div className='list'>
             <ul>
                 {
-                    props.items.map((item, index) => <li key={index}>
-                        {item.title}-{item.category}-{item.urgent ? 'URGENT' : 'non-urgent'}</li>)
+                    props.items.map(item => (
+                        <Item
+                            key={item.id} item={item}
+                            onDelete={props.onDelete}
+                            onFinish={props.onFinish}
+                        />
+                    ))
                 }
             </ul>
+
         </div>
     )
+
 }
 export default List;

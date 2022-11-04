@@ -1,3 +1,19 @@
 .App {
   text-align: center;
 }
+
+
+
+.header  button:hover {
+  text-shadow: 1px 1px rgb(247, 174, 204);
+}
+
+.header  button:active {
+  color: rgb(181, 54, 96);
+}
+.header  button:focus{
+ background-color: rgb(75, 24, 57);
+ color:white;
+
+}
+
