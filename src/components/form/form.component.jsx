@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './form.css';
-import GATIGORY_OPTION from '/Users/manalamro/react-todo-app/src/constants/data.js'
+import GATIGORY_OPTION from "/Users/manalamro/Desktop/rectoo/react-todo-app/src/constants/data.js"
 
 const Form = (props) => {
   const [title, setTitle] = useState('Go Swim');

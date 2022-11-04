@@ -1,39 +1,58 @@
-import { useState, useRef } from 'react';
+import { useState, useRef,useEffect } from 'react';
 import './App.css';
 import Add from './pages/add-item/add-item.page'
 import View from './pages/view-item/view'
 import Header from './components/header/header.component';
 import Dialog from './components/Dialog/dialog'
 
+const ReadItems = () => 
+JSON.parse(localStorage.getItem('todoList') || []);
+console.log(ReadItems());
+
 function App() {
-
-
   //You can put all product information into diaglog
   const [dialog, setDialog] = useState({
     message: "",
     isLoading: false,
   });
 
-  const [items, setItems] = useState(JSON.parse(localStorage.getItem('todoList')) || '[]');
+  const [items, setItems] = useState(null);
   //const [Window,setWindow] =useState(false);
-  const [currentpage, setCurrentPage] = useState(items.length > 0 ? 'view' : 'add');
+  const [currentpage, setCurrentPage] = useState('view');
+  const [loading, setLoading] = useState('view');
+
+  useEffect(() => {
+    setLoading(true);
+    console.log("Fetching Items...");
+
+    setTimeout(() => {
+      const items = ReadItems();
+      setItems(items);
+      setLoading(false);
+    }, 1000);
+
+  }, []);
+
+
+//useEffect for check the changed items.
+  useEffect(() => {
+    if (items !== null) {
+      console.log("Items has changed!");
+      localStorage.setItem('todoList', JSON.stringify(items));
+    }
+  }, [items]);
 
   const addItem = (item) => {
-    //store the items array and add the new item value to it 
-    const newItems = [...items, item];
     //set the updated value of items array 
-    setItems(newItems);
-    // store it at the local storage.
-    localStorage.setItem('todoList', JSON.stringify(newItems));
-
+    setItems([...items, item]);
   }
 
   const idItemRef = useRef();
-
   const handleDialog = (message, isLoading) => {
     setDialog({ message, isLoading });
   };
 
+  
   const deleteItem = (id) => {
     // const index = items.findIndex((item) => item.id === id);
     handleDialog("Are you sure you want to delete? sure you are sure ?", true);
@@ -43,10 +62,7 @@ function App() {
 
   const areUSureDelete = (choose) => {
     if (choose) {
-
-      const newitems = items.filter(item => item.id !== idItemRef.current);
-      setItems(newitems);
-      localStorage.setItem('todoList', JSON.stringify(newitems));
+      setItems(items?.filter(item => item.id !== idItemRef.current));
       handleDialog("", false);
     } else {
       handleDialog("", false);
@@ -61,15 +77,9 @@ function App() {
   };
 
   const finishitem = (id) => {
-    // const newitem = items.map((item) => {
-    //   if (item.id === id) {
-    //     return { ...item, isDone: true }
-    //   }
-    //   return item;
-    // });
-
     // Sort version of the mapping
-    const newItems = items.map(item => item.id === id ? { ...item, isDone: true } : item);
+    const newItems=(items?.map(item => item.id === id ?
+       { ...item, isDone: true } : item));
     setItems(newItems);
     sortFunction(newItems);
     localStorage.setItem('todoList', JSON.stringify(newItems));
@@ -83,10 +93,12 @@ function App() {
         {currentpage === 'add' && <Add onAddItem={addItem} />}
         {currentpage === 'view' &&
           <View
-            items={items}
+          loading={loading}
+          items={items || []}
             onDelete={deleteItem}
             onFinish={finishitem} />
         }
+
       </div>
       {dialog.isLoading && (
         <Dialog
