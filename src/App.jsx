@@ -11,7 +11,7 @@ function App() {
     setItems([...items, item]);
   }
 
-  const delItem=(id) =>{
+  const delItem = (id) => {
     alert(id);
     const newItems = items.filter(item => item.id !== id);;
     setItems(newItems);
@@ -19,13 +19,13 @@ function App() {
 
   return (
     <div className="App">
-      <h1>R-ToDOApp</h1>
+      <h1>Sprint To DO App</h1>
       <div>
-        <button onClick={()=>setPage('add')}>add</button>
-        <button onClick={()=>setPage('view')}>view</button>
+        <button onClick={() => setPage('add')}>add</button>
+        <button onClick={() => setPage('view')}>view</button>
       </div>
-      {page=='add' && <Form onAddItem={addItem} />}
-      {page=='view' && <List items={items} onDel={delItem}/>}
+      {page == 'add' && <Form onAddItem={addItem} />}
+      {page == 'view' && <List items={items} onDel={delItem} />}
     </div>
   );
 }

@@ -1,4 +1,35 @@
-.items-list {
+.items-list_deleted {
+    display: flex;
+    width: 90%;
     border-top: 2px solid #e3e3e3;
     padding: 10px;
+}
+
+button {
+    background-color: white;
+    border: 0px;
+}
+
+.rSide{
+    display: flex;
+    padding-right: 2%;
+    justify-content: space-between;
+}
+
+.item{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+ul {
+    display: flex;
+    width: 100%;
+}
+
+li {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
 }

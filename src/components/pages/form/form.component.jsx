@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './form.css';
 import CATEGORIES_LIST from './../../data/data';
 const Form = (props) => {
-  const [title, setTitle] = useState('Go Swim');
+  const [title, setTitle] = useState('Go and Do');
   const [category, setCategory] = useState('');
   const [isUrgent, setIsUrgent] = useState(false);
 

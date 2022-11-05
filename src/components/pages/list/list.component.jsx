@@ -14,9 +14,16 @@ const List = (props) => {
     <div className='items-list'>
       <ul>
         {
-          props.items.map((item, index) => <li key= {item.id} className= {item.urgent?"urgent":"" } >
-           <h2>{item.title} </h2> <span>{item.category}</span> 
-           <button onClick={()=>props.onDel(item.id)}> del</button>
+          props.items.map((item, index) => <li key={item.id} className={item.urgent ? "urgent" : ""} >
+            <div className="item">
+              <div className="lSide">
+                <h2>{item.title} </h2> <span>{item.category}</span>
+              </div>
+              <div className="rSide">
+                <button onClick={() => props.onDel(item.id)}> delete</button>
+                <button onClick={() => props.onDel(item.id)}> Done</button>
+              </div>
+            </div>
           </li>)
         }
       </ul>
