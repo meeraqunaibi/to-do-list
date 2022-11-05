@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
-import Form from './components/form/form.component';
-import List from './components/list/list.component';
+import Form from './components/pages/form/form.component';
+import List from './components/pages/list/list.component';
 
 function App() {
   const [items, setItems] = useState([]);

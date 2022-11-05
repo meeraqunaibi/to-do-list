@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './form.css';
-import CATEGORIES_LIST from './../data/data';
+import CATEGORIES_LIST from './../../data/data';
 const Form = (props) => {
   const [title, setTitle] = useState('Go Swim');
   const [category, setCategory] = useState('');
