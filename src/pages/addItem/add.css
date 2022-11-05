@@ -1,0 +1,13 @@
+.Lists {
+  width: 28rem;
+  background-color: #2d4263d8;
+  padding: 20px 40px;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  border-radius: 100px 0px 100px 0px;
+  color: rgb(255, 255, 255);
+}
+.header {
+  color: aliceblue;
+  width: 300px;
+}
