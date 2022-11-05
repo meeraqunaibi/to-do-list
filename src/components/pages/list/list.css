@@ -5,7 +5,7 @@
     padding: 10px;
 }
 
-button {
+.button {
     background-color: white;
     border: 0px;
 }
@@ -24,7 +24,6 @@ button {
 }
 
 ul {
-    display: flex;
     width: 100%;
 }
 
@@ -32,4 +31,8 @@ li {
     display: flex;
     width: 90%;
     justify-content: space-between;
+}
+
+.done {
+    text-decoration:line-through;
 }

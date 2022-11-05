@@ -1,3 +1,12 @@
 .App {
   text-align: center;
 }
+.addViewButtons{
+  width: 50%;
+  font-size: 30px;
+  border: none;
+}
+
+.selectedButton{
+  background-color: gray;
+}

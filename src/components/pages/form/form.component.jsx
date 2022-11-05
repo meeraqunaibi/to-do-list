@@ -10,10 +10,11 @@ const Form = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const newItem = {
-      id:new Date(),
+      id: new Date(),
       title: event.target.title.value,
       category: event.target.category.value,
-      urgent: event.target.urgent.checked
+      urgent: event.target.urgent.checked, 
+      done: false
     }
 
     props.onAddItem(newItem);
@@ -51,20 +52,19 @@ const Form = (props) => {
           {
             items.map((item) => (
               <option value={item.value} > {item.label} </option>
-
-        ))
+            ))
           }
-      </select>
-      <input
-        name="urgent"
-        type="checkbox"
-        checked={isUrgent}
-        onChange={(e) => setIsUrgent(e.target.checked)}
-      />
-      <label>Urgent</label>
-      <div className="separator" />
-      <input type="submit" value="Add to List" />
-    </form>
+        </select>
+        <input
+          name="urgent"
+          type="checkbox"
+          checked={isUrgent}
+          onChange={(e) => setIsUrgent(e.target.checked)}
+        />
+        <label>Urgent</label>
+        <div className="separator" />
+        <input type="submit" value="Add to Do" />
+      </form>
     </div >
   )
 };
