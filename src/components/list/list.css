@@ -7,27 +7,38 @@
 .button{
     margin-left: 84px;
     padding: 5px;
-    color: red;
-    width: 68px;
+    color: #cb4d4d;
+    width: 20%;
     height: 27px;
-    background-color: #FFF;
+    background-color: #a59a9a;
+    border-radius: 10px;
+    cursor: pointer;
+
 }
 .ul {
+    width: 600px;
     list-style-type: none;
 }
-
+.btns {
+    display: flex;
+    justify-content: center;
+    margin-left: 300px;
+    margin-bottom: 3px;
+    margin-top: -17px;
+    width: 53%;
+    
+}
 .li-list{
     list-style-type: none;
     background-color: #e3e3e3;
     margin-bottom: 4px;
     padding: 10px 15px;
     display: flex;
-    justify-content: space-between;
-    
+    border-left: 7px solid rgb(67, 161, 27);
     border-radius: 5px;
-    width: 600px;
+    width: 100%;
     align-items: center;
 }
-.li-list .urgent{
-    box-shadow: 2px 1px 8px rgb(163, 68, 91);
+.urgent{
+    border-left: 7px solid rgb(228, 84, 84);
 }

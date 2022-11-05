@@ -24,7 +24,9 @@ function App() {
   const deleteItem = (id)=>{
     // setDialog("Are you sure you want to delete? sure you are sure ?", true);
     const newItem = items.filter(item=> item.id !== id);
+    
     setItems(newItem);
+    localStorage.setItem("ToDo", JSON.stringify(newItem));
   }
 
   const finishItem = (id) => {
@@ -44,7 +46,7 @@ function App() {
      </div>
      {currentPage === 'add' && <AddItemPage onAdd={addItem}/>}
      {currentPage === 'view' && <ViewItemPage items={items} onDelete={deleteItem} onFinish={finishItem}/>}
-    
+     
     </div>
   );
 }
