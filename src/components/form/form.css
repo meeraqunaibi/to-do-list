@@ -1,32 +1,66 @@
-form {
-    display: flex;
-    align-items: center;
-    justify-content: center;    
-}
-
-form input,
-form select {
+.form input,
+.form select,
+label {
     padding: 10px;
     margin: 10px;
-    border-radius: 5px;
-    border-width: 1px;
+
 }
 
-form input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
-form input[type="submit"] {
-    border: 0;
-    background-color: #7f7f7f;
-    color: white;
+.form {
+
+    margin-top: 8vh;
+    padding: 30px;
+    background-color: #C9B6E4;
+    color: black;
+    text-align: left;
+    width: 80%;
+    border-radius: 35px;
+    border: 2px solid #440A67;
+
+}
+
+.form input {
+    width: 100px;
+    border-radius: 10px;
+    border: 2px solid #440A67;
+    text-align: center;
+}
+
+.form select {
+    width: 100px;
+    border-radius: 10px;
+    border: 2px solid #440A67;
+    text-align: center;
+    margin-left: 10px;
+}
+
+input[type="checkbox"] {
+    height: 1.5em;
+    width: 1.5em;
     cursor: pointer;
+    position: relative;
+    -webkit-transition: .10s;
+    border-radius: 4em;
+
+    background-color: #C9B6E4;
 }
 
-form .separator {
-    margin: 0 15px;
-    border-right: 1px solid #c3c3c3;
-    height: 51px;
+button {
+    padding: 20px;
+    background-color: #440A67;
+    color: aliceblue;
+    text-align: center;
+    border: 2px solid #C9B6E4;
+    border-radius: 10px;
+    margin-top: 15px;
+    
+
 }

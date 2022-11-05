@@ -1,0 +1,13 @@
+.title-view{
+    padding: 10px;
+    text-shadow: 1px 0px 3px black;
+    color: #440A67;
+    font-size: 25px;
+}
+.clock{
+    padding: 15px;
+    color: #440A67;
+    font-size:25px ;
+    text-shadow: 1px 0px 3px black;
+   
+}
