@@ -1,26 +1,21 @@
 import './list.css';
-
-/** 
- * @param {{
- * items: {
- *   title: event.target.title.value,
- *   category: event.target.category.value,
- *   urgent: event.target.urgent.checked
- * }[]
- * }} props
- */
+import Item from './item.component';
 const List = (props) => {
   return (
     <div className='items-list'>
       <ul>
         {
-          props.items.map((item, index) => <li key={index}>
-            {item.title} - {item.category} - {item.urgent ? 'URGENT' : 'non urgent'}
-          </li>)
+          props.items.map(item => (
+            <Item
+              key={item.id} 
+              item={item}
+              onDelete={props.onDelete}
+              onFinish={props.onFinish}
+            />
+          ))
         }
       </ul>
     </div>
   )
 };
-
 export default List;
