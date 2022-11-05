@@ -5,13 +5,13 @@ const Form = (props) => {
   const [title, setTitle] = useState("");
   const [type, setType] = useState(false);
   const [category, setCategory] = useState("");
-  
+
   const CATEGORIES_OPTIONS = [
     { value: "work", label: "Work Stuff" },
     { value: "home", label: "Home" },
     { value: "personal", label: "Personal" },
-    { value: "school", label: "School" }
-];
+    { value: "school", label: "School" },
+  ];
 
   const addItem = (event) => {
     event.preventDefault();
@@ -20,8 +20,8 @@ const Form = (props) => {
       isDone: false,
       title: event.target.title.value,
       category: event.target.category.value,
-      type: event.target.urgent.checked
-    }
+      type: event.target.urgent.checked,
+    };
     if (newItem.category === "") {
       alert("You must select a category!");
       return;
@@ -54,16 +54,14 @@ const Form = (props) => {
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         >
-          <option value="" disabled>Select</option>
-          {
-            CATEGORIES_OPTIONS.map(item => (
-              <option
-                value={item.value}
-                key={item.value}
-              >{item.label}
-              </option>
-            ))
-          }
+          <option value="" disabled>
+            Select
+          </option>
+          {CATEGORIES_OPTIONS.map((item) => (
+            <option value={item.value} key={item.value}>
+              {item.label}
+            </option>
+          ))}
         </select>
         <input
           name="urgent"
@@ -76,8 +74,7 @@ const Form = (props) => {
         <input type="submit" value="Add to List" />
       </form>
     </div>
-  )
-
+  );
 };
 
 export default Form;

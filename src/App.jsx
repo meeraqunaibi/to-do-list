@@ -8,6 +8,7 @@ import ViewPage from "./pages/view/view.jsx";
 import Item from "./components/list/item.component";
 import { useEffect } from "react";
 
+
 function App() {
   const [items, setItems] = useState(
     JSON.parse(localStorage.getItem("list")) || []

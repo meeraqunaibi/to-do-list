@@ -1,33 +1,33 @@
 form {
-    display: flex;
-    align-items: center;
-    justify-content: center;    
-    background-color: cornflowerblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: cornflowerblue;
 }
 
 form input,
 form select {
-    padding: 10px;
-    margin: 10px;
-    border-radius: 5px;
-    border-width: 1px;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  border-width: 1px;
 }
 
 form input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
 }
 
 form input[type="submit"] {
-    border: 0;
-    background-color: #7f7f7f;
-    color: white;
-    cursor: pointer;
+  border: 0;
+  background-color: #7f7f7f;
+  color: white;
+  cursor: pointer;
 }
 
 form .separator {
-    margin: 0 15px;
-    border-right: 1px solid #c3c3c3;
-    height: 51px;
+  margin: 0 15px;
+  border-right: 1px solid #c3c3c3;
+  height: 51px;
 }
