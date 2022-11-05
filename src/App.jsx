@@ -6,11 +6,20 @@ import AddItemPage from "./components/pages/addItem/addItem.component";
 import ViewItemPage from "./components/pages/viewItem/viewItem.component";
 
 function App() {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(JSON.parse(localStorage.getItem('ToDo'))||[]);
   const [currentPage, setCurrentPage] = useState([]);
   const addItem = (item) => {
     console.log("add item", item);
-    setItems([...items, item])
+    if (item.urgent ){
+      const newItem = [item,...items];
+      setItems(newItem);
+      localStorage.setItem( 'ToDo' , JSON.stringify(newItem));
+    }
+    else{
+    const newItem = [...items, item];
+    setItems(newItem);
+    localStorage.setItem( 'ToDo' , JSON.stringify(newItem));
+    }
   }
   const deleteItem = (id)=>{
     // setDialog("Are you sure you want to delete? sure you are sure ?", true);
