@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Form from './components/form/form.component';
 import List from './components/list/list.component';
 import AddItem from './pages/add item/additem.component';
@@ -12,7 +12,34 @@ function App() {
   const [items, setitems] = useState(JSON.parse(localStorage.getItem('todoList') || '[]'));
   const [currentPage, setcurrentPage] = useState(items.length > 0 ? 'view' : 'add');
   const [modal, setModal] = useState(false);
+  const [loading, setLoading] = useState('view');
 
+  useEffect(() => {
+    setLoading(true);
+    console.log("Fetching Items...");
+    setTimeout(() => {
+      const items = JSON.parse(localStorage.getItem('todoList') || '[]');
+      setitems(items);
+      setLoading(false);
+    }, 1000);
+
+  }, []);
+
+
+  useEffect(() => {
+    if (items !== null) {
+      console.log("Items has changed!");
+      localStorage.setItem('todoList', JSON.stringify(items));
+    }
+  }, [items]);
+
+
+  const sortFunction = (item) => {
+    const newItems = [...item].sort((firstItem, secondItem) =>
+      firstItem.isDone > secondItem.isDone ? 1 : -1,
+    );
+    setitems(newItems);
+  };
 
   const addItem = (item) => {
     const newItems = [...items, item];
@@ -36,7 +63,7 @@ function App() {
   const finishItem = (id) => {
     const newItems = items.map(item => item.id === id ? { ...item, isDone: true } : item);
     setitems(newItems);
-
+sortFunction(newItems);
     localStorage.setItem('todoList', JSON.stringify(newItems));
 
   }
@@ -50,7 +77,9 @@ function App() {
         <button onClick={()=>setcurrentPage('view')}>View Item</button>
       </div> */}
       {currentPage === 'add' && <AddItem addItem={addItem} />}
-      {currentPage === 'view' && <ViewItem items={items} 
+      {currentPage === 'view' && <ViewItem items={items}             loading={loading}
+
+ 
         deleteItem={deleteItem} finishItem={finishItem} />}
 
 {modal && (

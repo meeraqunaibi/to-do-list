@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import List from '../../components/list/list.component';
 import './viewitem.css'
+import loadIcon from '../../assets/load.png';
+
 const ViewItem = (props) => {
     const [time, settime] = useState(new Date());
 
@@ -24,6 +26,11 @@ const ViewItem = (props) => {
 
                 props.items.length > 0
                     ? <List items={props.items} onDelete={props.deleteItem} onFinish={props.finishItem}/>
+                    : props.loading
+                    ? <h2 style={{ textAlign: 'center', marginTop: '40px' }}>
+                      <img src={loadIcon} alt="loading" width={120} />
+                    </h2>
+        
                     : <h2 className='h'>No Items Added</h2>
             }
         </div>
