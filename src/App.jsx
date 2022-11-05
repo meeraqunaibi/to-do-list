@@ -10,11 +10,11 @@ function App() {
   const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState('view');
   const [loading, setLoading] = useState(false);
+  const [sure, setSure] = useState(false);
 
   useEffect(() => {
     setLoading(true);
     console.log("Fetching Items...");
-
     setTimeout(() => {
       const items = ReadItems();
       setItems(items);
@@ -32,9 +32,12 @@ function App() {
   const addItem = (item) => {
     setItems([...items, item]);
   }
-
+  //************* */
   const delateItem = (id) => {
     alert("you sure delete this task")
+    
+    setSure(true);
+
     const newItemsData = items.filter(it => it.id !== id);
     setItems(newItemsData);
   }
@@ -45,19 +48,21 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <Header setCurrentPage={setCurrentPage} currentPage={currentPage} />
-      <div className="container">
-        {currentPage === 'add' && <AddItemPage addItem={addItem} />}
-        {currentPage === 'view' &&
-          <ViewItemsPage
-            loading={loading}
-            items={items || []}
-            Complete={Complete}
-            delateItem={delateItem} />
-        }
+    <>
+      <div className="App">
+        <Header setCurrentPage={setCurrentPage} currentPage={currentPage} />
+        <div className="container">
+          {currentPage === 'add' && <AddItemPage addItem={addItem} />}
+          {currentPage === 'view' &&
+            <ViewItemsPage
+              loading={loading}
+              items={items || []}
+              Complete={Complete}
+              delateItem={delateItem} />
+          }
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 export default App;

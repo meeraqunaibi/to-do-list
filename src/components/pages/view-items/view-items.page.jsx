@@ -30,6 +30,17 @@ const ViewItemsPage = (props) => {
             </div>
             : <h2>No Items Added!</h2>
       }
+
+      {
+        props.sure ?
+          <div className='cont'>
+            <span> are you sure to delete this task?</span>
+            <div className='confirm'>
+              <button>sure</button>
+              <button>cancel</button></div>
+          </div> : <div></div>
+      }
+
     </div>
   )
 };

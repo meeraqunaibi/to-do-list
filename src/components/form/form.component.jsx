@@ -46,10 +46,10 @@ const Form = (props) => {
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         >
-          <option value="" disabled>Select</option>
+          <option value="" disabled >Select</option>
           {
             category_items.map(item => (
-              <option value={item.value} key={item.id}>{item.label}</option>
+              <option value={item.value} key={item.value}>{item.label}</option>
             ))
           }
         </select>
