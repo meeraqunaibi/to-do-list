@@ -36,3 +36,43 @@ li {
 .done {
     text-decoration:line-through;
 }
+
+.invisibleDialog {
+    display: block;
+    visibility: hidden;
+
+}
+.visibleDialog {
+    display: block;
+    visibility: visible;
+
+}
+
+.modal{
+    z-index:3;
+    display:none;
+    padding-top:100px;
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,0.4)
+}
+.modal-content{
+    margin:auto;
+    background-color:#fff;
+    border-radius: 20px;
+    position:relative;
+    padding:10px;
+    outline:0;
+    width:60%
+}
+
+.w3-button{border:none;display:inline-block;
+    padding:8px 16px;vertical-align:middle;
+    overflow:hidden;text-decoration:none;
+    color:inherit;background-color:inherit;
+    text-align:center;
+    cursor:pointer;white-space:nowrap
+}
