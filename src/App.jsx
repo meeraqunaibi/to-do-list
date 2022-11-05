@@ -1,10 +1,33 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
-import Form from './components/form/form.component';
-import List from './components/list/list.component';
+import Header from '../src/components/header/header.component';
+import AddItemPage from '../src/components/pages/add-item/add-item.page';
+import ViewItemsPage from '../src/components/pages/view-items/view-items.page';
+
+const ReadItems = () => JSON.parse(localStorage.getItem('todoList') || '[]');
 
 function App() {
   const [items, setItems] = useState([]);
+  const [currentPage, setCurrentPage] = useState('view');
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    console.log("Fetching Items...");
+
+    setTimeout(() => {
+      const items = ReadItems();
+      setItems(items);
+      setLoading(false);
+    }, 1000);
+  }, []);
+
+  useEffect(() => {
+    if (items !== null) {
+      console.log("Items has changed!");
+      localStorage.setItem('todoList', JSON.stringify(items));
+    }
+  }, [items]);
 
   const addItem = (item) => {
     setItems([...items, item]);
@@ -23,11 +46,18 @@ function App() {
 
   return (
     <div className="App">
-      <h1>R-ToDOApp (hallow every day)</h1>
-      <Form onAddItem={addItem} />
-      <List onDelate={delateItem} onComplete={Complete} items={items} />
+      <Header setCurrentPage={setCurrentPage} currentPage={currentPage} />
+      <div className="container">
+        {currentPage === 'add' && <AddItemPage addItem={addItem} />}
+        {currentPage === 'view' &&
+          <ViewItemsPage
+            loading={loading}
+            items={items || []}
+            Complete={Complete}
+            delateItem={delateItem} />
+        }
+      </div>
     </div>
   );
 }
-
 export default App;
