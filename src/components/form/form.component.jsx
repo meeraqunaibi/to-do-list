@@ -20,9 +20,9 @@ const Form = (props) => {
      setCategory("");
      setUrgent(false);
     }
-    const handelTitle=(e)=>{
-        let t = e.target.value ; 
-        t = t.replace (".","-");
+    const handelTitle = (e) => {
+        let t = e.target.value;
+        t = t.replace(".", "-");
         setTitle(t);
     }
   return (
