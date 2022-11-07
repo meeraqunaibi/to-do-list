@@ -9,8 +9,8 @@
 }
 
 .topnav {
-  /* overflow: hidden; */
-  /* background-color: rgb(211, 87, 37); */
+  overflow: hidden;
+  background-color: rgb(211, 87, 37);
 }
 
 .topnav a {
