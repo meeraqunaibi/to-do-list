@@ -1,23 +1,24 @@
 import React from 'react';
-import './header.css'
+import './header.css';
+import { Link } from 'react-router-dom';
 
-const Header = (props) => {
+const Header = () => {
   return (
     <div className="header">
       <h1>R ToDo App</h1>
       <nav>
-        <button
-          className={props.currentPage === 'add' ? 'active' : ''}
-          onClick={() => props.setCurrentPage('add')}
+        <Link
+          // className={props.currentPage === 'add' ? 'active' : ''}
+          to="/add"
         >
           Add Item
-        </button>
-        <button
-          className={props.currentPage === 'view' ? 'active' : ''}
-          onClick={() => props.setCurrentPage('view')}
+        </Link>
+        <Link
+          // className={props.currentPage === 'view' ? 'active' : ''}
+          to="/view"
         >
           View Items
-        </button>
+        </Link>
       </nav>
     </div>
   )

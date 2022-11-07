@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import './App.css';
 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/header/header.component';
 import AddItemPage from './pages/add-item/add-item.page';
 import ViewItemsPage from './pages/view-items/view-items.page';
+import NotFound from './pages/not-found/not-found.component';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('add');  // Either add or view
   const [items, setItems] = useState(JSON.parse(localStorage.getItem('todoList') || '[]'));
 
   const addItem = (item) => {
@@ -32,16 +33,16 @@ function App() {
 
   return (
     <div className="App">
-      <Header setCurrentPage={setCurrentPage} currentPage={currentPage} />
-      <div className="container">
-        {currentPage === 'add' && <AddItemPage addItem={addItem} />}
-        {currentPage === 'view' &&
-          <ViewItemsPage
-            items={items}
-            deleteItem={deleteItem}
-            finishItem={finishItem} />
-        }
-      </div>
+      <BrowserRouter>
+        <Header />
+        <div className="container">
+          <Routes>
+            <Route path="/add" element={<AddItemPage addItem={addItem} />} />
+            <Route path="/view" element={<ViewItemsPage items={items} deleteItem={deleteItem} finishItem={finishItem} />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }

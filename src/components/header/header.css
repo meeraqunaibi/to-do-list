@@ -17,7 +17,7 @@
   text-transform: uppercase;
 }
 
-.header nav button {
+.header nav a {
   background: none;
   border: none;
   font-size: 16px;
@@ -28,16 +28,17 @@
   margin: 0 5px;
   padding: 7px 14px;
   border-radius: 5px;
+  text-decoration: none;
 }
 
-.header nav button.active {
+.header nav a.active {
   background-color: #F1C40F;
 }
 
-.header nav button:hover {
+.header nav a:hover {
   text-shadow: 1px 1px #aaa;
 }
 
-.header nav button:active {
+.header nav a:active {
   color: #333;
 }
