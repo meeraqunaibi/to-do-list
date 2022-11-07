@@ -5,12 +5,12 @@ import List from "./components/list/list.component";
 import AddItemPage from "./components/pages/addItem/addItem.component";
 import ViewItemPage from "./components/pages/viewItem/viewItem.component";
 import Dialog from "./dialog/dialog.components";
-
+import {Route , Routes , BrowserRouter} from  'react-router-dom' ;
+import { Link } from 'react-router-dom';
 function App() {
   const [items, setItems] = useState(
     JSON.parse(localStorage.getItem("ToDo")) || []
   );
-  const [currentPage, setCurrentPage] = useState([]);
   const [item, setItem] = useState(undefined);
   const addItem = (item) => {
     console.log("add item", item);
@@ -48,32 +48,23 @@ function App() {
 
   return (
     <div className="App">
+      <BrowserRouter>
       <div className="header">
         <h1>To Do List</h1>
         <div className="but">
-          <button
-            className={currentPage === "add" ? "active" : ""}
-            onClick={() => setCurrentPage("add")}
-          >
-            Add Page
-          </button>
-          <button
-            className={currentPage === "view" ? "active" : ""}
-            onClick={() => setCurrentPage("view")}
-          >
-            View Page
-          </button>
+          <Link  to="/add"> add Item </Link>
+          <Link to="/view">  View Items</Link>
         </div>
-      </div>
-      {currentPage === "add" && <AddItemPage onAdd={addItem} />}
-      {currentPage === "view" && (
-        <ViewItemPage
+      </div> 
+      <Routes>
+        <Route path="view" element={< ViewItemPage
           items={items}
           displayDialog={displayDialog}
           onDelete={deleteItem}
-          onFinish={finishItem}
-        />
-      )}
+          onFinish={finishItem}/>}></Route>
+        <Route path="add" element={<AddItemPage onAdd={addItem}/>}></Route>
+      </Routes>
+      </BrowserRouter>
       {item && (
         <Dialog onDelete={deleteItem2} item={item} onPop={displayDialog} />
       )}
