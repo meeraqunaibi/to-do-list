@@ -1,10 +1,15 @@
+import { Link } from 'react-router-dom';
 import './header.css'
 const Header = (props) => {
   return (
     <div className="header">
       <h1>to do app</h1>
       <nav>
-        <button
+        <Link to='/add'> Add</Link>
+        <Link to='/view'>
+View
+        </Link>
+        {/* <button
           className={props.currentPage === 'add' ? 'active' : ''}
           onClick={() => props.setcurrentPage('add')}
         >
@@ -15,7 +20,7 @@ const Header = (props) => {
           onClick={() => props.setcurrentPage('view')}
         >
           View Items
-        </button>
+        </button> */}
       </nav>
     </div>
   );

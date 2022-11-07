@@ -5,6 +5,8 @@ import List from './components/list/list.component';
 import AddItem from './pages/add item/additem.component';
 import ViewItem from './pages/view item/viewitem.component';
 import Header from './components/header/header.component';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Notfound from './pages/notfound/notfound.component';
 
 function App() {
 
@@ -71,16 +73,32 @@ sortFunction(newItems);
 
   return (
     <div className="App">
-      <Header setcurrentPage={setcurrentPage} currentPage={currentPage} />
+           
+
+      <BrowserRouter>
+      <Header  />
+      <Routes>
+        <Route path='/view' element={<ViewItem items={items}             loading={loading}
+
+ 
+deleteItem={deleteItem} finishItem={finishItem} />} >
+
+        </Route>
+        <Route path='/add' element={ <AddItem addItem={addItem} />}></Route>
+        <Route path='*' element={<Notfound />}></Route>
+
+      </Routes>
+      </BrowserRouter>
+
       {/* <div>
         <button  onClick={()=>setcurrentPage('add')}>Add Item</button>
         <button onClick={()=>setcurrentPage('view')}>View Item</button>
       </div> */}
-      {currentPage === 'add' && <AddItem addItem={addItem} />}
+      {/* {currentPage === 'add' && <AddItem addItem={addItem} />}
       {currentPage === 'view' && <ViewItem items={items}             loading={loading}
 
  
-        deleteItem={deleteItem} finishItem={finishItem} />}
+        deleteItem={deleteItem} finishItem={finishItem} />} */}
 
 {modal && (
         <div className="modal">
