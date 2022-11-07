@@ -2,22 +2,24 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 import FormPage from "./pages/pages/formpage/form.page";
+import NotFoundPage from "./pages/pages/notfound/notfound";
 import LIstViewPage from "./pages/pages/listviewpage/listview.page";
 import PopUp from "./components/popup.componant/popup ,componant";
 import Header from "./components/header/header";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   const [items, setItems] = useState(
     JSON.parse(localStorage.getItem("ToDoTtems")) || []
   );
-  const [currentpage, changepage] = useState("form");
+  // const [currentpage, changepage] = useState("form");
   const [popup, changepopup] = useState(false);
   const [deleteornot, changedelete] = useState(false);
 
   const [iddelete, changeid] = useState();
 
   const addItem = (item) => {
-    const newItems=[...items, item];
+    const newItems = [...items, item];
     setItems(newItems);
     // sorturgrnt(newItems);
   };
@@ -51,12 +53,11 @@ function App() {
 
   const sort = (lola) => {
     const newItems = [...lola].sort((a, b) => (a.isDone > b.isDone ? 1 : -1));
-   
+
     setItems(newItems);
     // sorturgrnt(newItems);
   };
 
- 
   const donefun = (id) => {
     const newItems = items.map((item) =>
       item.id === id ? { ...item, isDone: true } : item
@@ -66,16 +67,18 @@ function App() {
     sort(newItems);
   };
 
-  useEffect(() => {
-    {
-      items.length === 0 ? (changepage("form")) : (changepage("listview"));
-    }
-  }, []);
+  // useEffect(() => {
+  //   {
+  // items.length === 0 ? (changepage("form")) : (changepage("listview"));
+  //   }
+  // }, []);
 
   return (
     <div className="App">
       {localStorage.setItem("ToDoTtems", JSON.stringify(items))}
-      <Header changepage={changepage} page={currentpage} />
+      <BrowserRouter>
+      <Header />
+      {/* changepage={changepage} page={currentpage} /> */}
 
       <div className="appbody">
         {/* <Form addItem={addItem} />
@@ -83,10 +86,29 @@ function App() {
         <hr/>
         <List items={items} ondelete={deletefun} /> */}
 
-        {currentpage === "form" && <FormPage addItem={addItem} />}
+       
+          <Routes>
+            <Route path="/add" element={<FormPage addItem={addItem} />} />
+            <Route
+              path="/view"
+              element={
+                <LIstViewPage
+                  items={items}
+                  ondelete={deletefun}
+                  done={donefun}
+                />
+              }
+            />
+            <Route path="*" element={<NotFoundPage/>}/>
+          </Routes>
+       
+
+        {/* ///////////////////////////////// */}
+
+        {/* {currentpage === "form" && <FormPage addItem={addItem} />}
         {currentpage === "listview" && (
           <LIstViewPage items={items} ondelete={deletefun} done={donefun} />
-        )}
+        )} */}
 
         {console.log(deleteornot, popup)}
 
@@ -98,6 +120,7 @@ function App() {
           />
         )}
       </div>
+      </BrowserRouter>
     </div>
   );
 }

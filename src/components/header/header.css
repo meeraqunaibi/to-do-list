@@ -9,14 +9,17 @@
 }
 
 .topnav {
-  overflow: hidden;
-  background-color: rgb(211, 87, 37);
+  /* overflow: hidden; */
+  /* background-color: rgb(211, 87, 37); */
 }
 
-.topnav button {
+.topnav a {
+  background-color: rgb(211, 87, 37);
+
+  color: white;
   margin: 10px;
   float: left;
-  color: rgb(211, 87, 37);
+
   text-align: center;
   padding: 10px 16px;
   text-decoration: none;
@@ -27,13 +30,13 @@
   border-radius: 15px;
 }
 
-.topnav button:hover {
+.topnav a:hover {
   background-color: #ddd;
 
   color: black;
 }
 
-.topnav button.active {
+.topnav a.active {
   background-color: rgb(211, 87, 37);
   color: white;
   box-shadow: #888888 0 3px 7px inset;
