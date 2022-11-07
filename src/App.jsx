@@ -7,8 +7,9 @@ import AddItemPage from './pages/add-item/add-item.page';
 import ViewItemsPage from './pages/view-items/view-items.page';
 import NotFound from './pages/not-found/not-found.component';
 
+const ReadItems = () => JSON.parse(localStorage.getItem('todoList') || '[]');
+
 function App() {
-  const [currentPage, setCurrentPage] = useState('view');  // Either add or view
   const [items, setItems] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -50,12 +51,21 @@ function App() {
         <div className="container">
           <Routes>
             <Route path="/add" element={<AddItemPage addItem={addItem} />} />
-            <Route path="/view" element={<ViewItemsPage items={items} deleteItem={deleteItem} finishItem={finishItem} />} />
+            <Route
+              path="/view"
+              element={
+                <ViewItemsPage
+                  items={items || []}
+                  deleteItem={deleteItem}
+                  finishItem={finishItem}
+                  loading={loading}
+                />}
+            />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </BrowserRouter>
-    </div>
+    </div >
   );
 }
 
