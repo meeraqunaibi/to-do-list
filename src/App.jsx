@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -8,27 +8,39 @@ import ViewItemsPage from './pages/view-items/view-items.page';
 import NotFound from './pages/not-found/not-found.component';
 
 function App() {
-  const [items, setItems] = useState(JSON.parse(localStorage.getItem('todoList') || '[]'));
+  const [currentPage, setCurrentPage] = useState('view');  // Either add or view
+  const [items, setItems] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    console.log("Fetching Items...");
+
+    setTimeout(() => {
+      const items = ReadItems();
+      setItems(items);
+      setLoading(false);
+    }, 1000);
+
+  }, []);
+
+  useEffect(() => {
+    if (items !== null) {
+      console.log("Items has changed!");
+      localStorage.setItem('todoList', JSON.stringify(items));
+    }
+  }, [items]);
 
   const addItem = (item) => {
-    const newItems = [...items, item];
-    setItems(newItems);
-
-    localStorage.setItem('todoList', JSON.stringify(newItems));
+    setItems([...items, item]);
   }
 
   const deleteItem = (id) => {
-    const newItems = items.filter(item => item.id !== id);
-    setItems(newItems);
-
-    localStorage.setItem('todoList', JSON.stringify(newItems));
+    setItems(items?.filter(item => item.id !== id));
   }
 
   const finishItem = (id) => {
-    const newItems = items.map(item => item.id === id ? { ...item, isDone: true } : item);
-    setItems(newItems);
-
-    localStorage.setItem('todoList', JSON.stringify(newItems));
+    setItems(items?.map(item => item.id === id ? { ...item, isDone: true } : item));
   }
 
   return (
