@@ -4,6 +4,8 @@ import Form from './componetnts/form/form.componetnts';
 import { useState } from 'react';
 import List from './componetnts/llist/list.copmponentnts';
 import Popup from './componetnts/popup/popup.componetnt';
+import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-dom';
+import Header from './componetnts/header/header.componentnts';
 function App() {
   const [item, setItem] = useState(JSON.parse(localStorage.getItem("todolist")) || []);
   const [Page, setPage] = useState("View");
@@ -30,26 +32,28 @@ function App() {
 
 
   return (
+    <BrowserRouter>
+      <div className="App">
 
-    <div className="App">
-      <div className='nav'>
-        <h1 style={{ color: "black" }}>R-To Do App</h1>
-        <div>
-          <button style={Page == "Add" ? { boxShadow: "2px 2px 2px 2px tomato " } : null} onClick={() => setPage("Add")} id='add' >Add Task</button>
-          <button style={Page == "View" ? { boxShadow: "2px 2px 2px 2px skyblue" } : null} onClick={() => setPage("View")} id='view' >View Task</button>
-        </div>
+        <Header></Header>
+        <Routes>
+          <Route path='/View' element={<List onDelete={Delete} onCheck={Checked} items={item} />} />
+          <Route path='/Add' element={<Form onAddFunction={addItem} />} />
+          <Route path='*' element={<h1>page not found</h1>} />
+        </Routes>
+
+        {
+          // Page == "View" && (item.length) ? <List onDelete={Delete} onCheck={Checked} items={item} /> : <Form onAddFunction={addItem} />
+        }
+        {
+          console.log(JSON.stringify(item).length)
+        }
+
+
+
+
       </div>
-      {
-        Page == "View" && (item.length) ? <List onDelete={Delete} onCheck={Checked} items={item} /> : <Form onAddFunction={addItem} />
-      }
-      {
-        console.log(JSON.stringify(item).length)
-      }
-
-
-
-
-    </div>
+    </BrowserRouter>
   );
 }
 export default App;
