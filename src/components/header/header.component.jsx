@@ -1,26 +1,27 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './header.css'
 
-const Header = (props) => {
+const Header = () => {
   return (
     <div className="header">
       <h1> React ToDo App</h1>
       <nav>
-        <button
-          className={props.currentPage === 'add' ? 'active' : ''}
-          onClick={() => props.setCurrentPage('add')}
-        >
+        <Link
+          to="/add">
           Add Item
-        </button>
-        <button
-          className={props.currentPage === 'view' ? 'active' : ''}
-          onClick={() => props.setCurrentPage('view')}
-        >
-          View Items
-        </button>
+
+        </Link>
+
+        <Link
+          to="/view">
+          View Item
+        </Link>
       </nav>
     </div>
   )
 }
 
 export default Header
+
+
