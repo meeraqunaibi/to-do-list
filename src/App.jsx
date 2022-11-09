@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Header from "./components/header/header.component";
 import AddItem from "./pages/addItem/addItem.component";
@@ -10,14 +11,15 @@ function App() {
   );
   const [isShown, setIsShown] = useState(false);
   const [id, setId] = useState();
-  const [currentPage, setCurrentPage] = useState(
-    items.length === 0 ? "add" : "view"
-  );
+  // const [loading, setLoading] = useState(false);
+  // useEffect(()=>{
+
+  // }, [])
+
   const addNewItem = (item) => {
     let newItems = [...items, item].sort((a, b) => a.isDone - b.isDone);
     setItems(newItems);
     localStorage.setItem("to-do-list", JSON.stringify(newItems));
-    setCurrentPage("view");
   };
   const onDelete = (id) => {
     const newItems = items.filter((item) => item.id !== id);
@@ -43,21 +45,29 @@ function App() {
   };
   return (
     <div className="App">
-      <Header setCurrentPage={setCurrentPage} />
-      {currentPage === "add" ? <AddItem addNewItem={addNewItem} /> : ""}
-      {currentPage === "view" ? (
-        <ViewItems
-          onFinish={onFinish}
-          items={items}
-          showDialog={showDialog}
-          id={id}
-          deleteTask={onDelete}
-          undoDelete={undoDelete}
-          isShown={isShown}
-        />
-      ) : (
-        ""
-      )}
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route
+            path="/add"
+            element={<AddItem addNewItem={addNewItem} />}
+          ></Route>
+          <Route
+            path="/view"
+            element={
+              <ViewItems
+                onFinish={onFinish}
+                items={items}
+                showDialog={showDialog}
+                id={id}
+                deleteTask={onDelete}
+                undoDelete={undoDelete}
+                isShown={isShown}
+              />
+            }
+          ></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
