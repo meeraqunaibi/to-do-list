@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   padding: 0 calc((100% - 70vw) / 2);
-  background-color: #3498DB;
+  background-color: #3498db;
   box-sizing: border-box;
   align-items: center;
 }
@@ -17,28 +17,27 @@
   text-transform: uppercase;
 }
 
-.header nav a {
+.header nav button {
   background: none;
   border: none;
   font-size: 16px;
   cursor: pointer;
-  color: #2C3E50;
+  color: #2c3e50;
   font-weight: 600;
   outline: 0;
   margin: 0 5px;
   padding: 7px 14px;
   border-radius: 5px;
-  text-decoration: none;
 }
 
-.header nav a.active {
-  background-color: #F1C40F;
+.header nav button.active {
+  background-color: #f1c40f;
 }
 
-.header nav a:hover {
+.header nav button:hover {
   text-shadow: 1px 1px #aaa;
 }
 
-.header nav a:active {
+.header nav button:active {
   color: #333;
 }

@@ -1,20 +1,11 @@
-import CATEGORIES_OPTIONS from '../../constants/data';
-import deleteIcon from '../../assets/delete.svg';
-import checkIcon from '../../assets/check.svg';
-
-/** 
- * @param {{
- * item: {
- *   id: number,
- *   title: string,
- *   isDone: boolean,
- *   category: string,
- *   urgent: string
- * }
- * }} props
- */
+const cat_options = [
+    { value: "work", label: "Work Stuff" },
+    { value: "home", label: "Home" },
+    { value: "personal", label: "Personal" },
+    { value: "school", label: "School" }
+];
 const Item = (props) => {
-  const { item } = props;
+  const {onFinish,key, item, onDelete} = props;
 
   return (
     <li
@@ -25,17 +16,12 @@ const Item = (props) => {
       >
         <h2>{item.title}</h2>
         <span>
-          {
-            CATEGORIES_OPTIONS.filter(cat => cat.value === item.category)[0]?.label
-          }
+            {item.category}
         </span>
       </div>
       <div className="actions">
-        <button onClick={() => props.onDelete(item.id)}>
-          <img className="delete" src={deleteIcon} alt="delete" width={25} />
-        </button>
-        <button onClick={() => props.onFinish(item.id)} disabled={item.isDone}>
-          <img className="check" src={checkIcon} alt="check" width={25} />
+        <button onClick={() => onDelete(item.id)}>X	</button>
+        <button onClick={() => onFinish(item.id)} disabled={item.isDone}>	&#10003;
         </button>
       </div>
     </li>
