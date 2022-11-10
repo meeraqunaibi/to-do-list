@@ -1,71 +1,109 @@
-import { useEffect, useState } from 'react';
+
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import AddItemsPage from './component/pages/add-item/add-item.component';
+import ViewItemsPage from './component/pages/view-item/view-item.component';
+import NotFound from '../src/component/pages/not-found/not-found.component';
+import Header from './component/header/header.component';
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Header from './components/header/header.component';
-import AddItemPage from './pages/add-item/add-item.page';
-import ViewItemsPage from './pages/view-items/view-items.page';
-import NotFound from './pages/not-found/not-found.component';
+// import Form from './component/form/form.component';
+// import List from './component/list/list.component';
 
-const ReadItems = () => JSON.parse(localStorage.getItem('todoList') || '[]');
 
 function App() {
-  const [items, setItems] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [item, setItem] = useState();
+  // const [currentPage, setCurrentPage] = useState('add');  // value Add or View
+  const [loding, setLoding] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    console.log("Fetching Items...");
-
+    setLoding(true);
     setTimeout(() => {
-      const items = ReadItems();
-      setItems(items);
-      setLoading(false);
-    }, 1000);
+      const items = JSON.parse(localStorage.getItem('React To DO App') || '[]');
+      setItem(items);
+      setLoding(false);
+    }, 10 * 1000);
+  }, [])
 
-  }, []);
+  // const addItem =(items)=>{
+  //      setItem([...item , items]);
+  //      localStorage.setItem('to do list', JSON.stringify(item))
+  // }
 
-  useEffect(() => {
-    if (items !== null) {
-      console.log("Items has changed!");
-      localStorage.setItem('todoList', JSON.stringify(items));
-    }
-  }, [items]);
-
-  const addItem = (item) => {
-    setItems([...items, item]);
+  const addItem = (items) => {
+    const newItem = [...item, items];
+    setItem(newItem);
+    localStorage.setItem('React To DO App', JSON.stringify(newItem));
   }
+  // const deleteItem = (id) => {
+  //   setItem(item?.filter(items => items.id !== id));
+  // }
 
-  const deleteItem = (id) => {
-    setItems(items?.filter(item => item.id !== id));
-  }
+  // const finishItem = (id) => {
+  //   setItem(item?.map(items => items.id === id ? { ...items, isDone: true } : items));
+  // }
 
-  const finishItem = (id) => {
-    setItems(items?.map(item => item.id === id ? { ...item, isDone: true } : item));
+  const dele= (id) =>{
+    //  const newArr = item.filter(i=>{
+    //      return  i.id !== id 
+    //      })
+    //      setItem(newArr);
+    const newArr = item.filter(i => { return i.id !== id })
+    setItem(newArr);
+    localStorage.setItem('React To DO App', JSON.stringify(newArr));
   }
+ 
+
+  const onFinish = (id) => {
+    // const finishArr = item.filter(f=>{
+    //   return f.id === id ? {...item , isDone:true} : item
+    // })
+    // setItem(finishArr);
+
+    const finishArr = item.filter(f => { return f.id === id ? { ...item, isDone: true } : item })
+    setItem(finishArr);
+    localStorage.setItem('React To DO App', JSON.stringify(finishArr));
+
+  }
+//  console.log(deleteItem)
 
   return (
+    
     <div className="App">
-      <BrowserRouter>
-        <Header />
-        <div className="container">
-          <Routes>
-            <Route path="/add" element={<AddItemPage addItem={addItem} />} />
-            <Route
-              path="/view"
-              element={
-                <ViewItemsPage
-                  items={items || []}
-                  deleteItem={deleteItem}
-                  finishItem={finishItem}
-                  loading={loading}
-                />}
-            />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </div>
+      {/* <Form onAddItem={addItem}/>
+      <List item={item}   deleteItem={deleteItem}  onFinish={onFinish}/>  */}
+       
+       <BrowserRouter>
+      <div className='header'>
+        
+      
+         <Header/>
+           
+        {/* <button id='btn1' className={currentPage === 'add' ? "active" : ''} onClick={() => setCurrentPage('add')}>Add-item</button>
+        <button  className={currentPage === 'view' ? "active" : ''} onClick={() => setCurrentPage('view')}>View-item</button> */}
+      </div>
+        
+        <Routes>
+          <Route path="/view" element={  <ViewItemsPage  deleteHandel={dele} loding={loding} item={item}  onFinish={onFinish} finishHandel={onFinish} />}/>
+          <Route path="/add" element={ <AddItemsPage addItem={addItem}  />} />
+           <Route path='/*' element={<NotFound/>}/>
+        </Routes>
       </BrowserRouter>
-    </div >
+      
+      {/* conditional Rendering  */}
+
+      {/* {currentPage === 'add' && <AddItemsPage addItem={addItem} />}
+      {currentPage === 'view' && <ViewItemsPage 
+        loding={loding}
+        item={item}
+        deleteHandel={dele}
+        onFinish={onFinish} 
+        finishHandel={onFinish} />}
+  */}
+
+    </div>
+    
   );
 }
 

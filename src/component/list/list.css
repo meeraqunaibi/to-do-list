@@ -1,0 +1,43 @@
+.list ul{
+    align-items: center;
+    width: 60%;
+    margin-left: 250px;
+}
+.list li{
+
+    list-style-type: none;
+    background-color: rgb(222, 228, 228);
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
+    color: #000;
+    border-left: solid 3px red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.btn{
+    background-color: rgb(228, 28, 28);
+    padding: 8px;
+    margin: 10px;
+    border-radius: 7px;
+    outline: none;
+    border: none;
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.btn1{
+    background-color: rgb(11, 109, 60);
+    padding: 8px;
+    margin: 10px;
+    border-radius: 7px;
+    outline: none;
+    border: none;  
+     display: flex;
+    justify-content: flex-end;
+    cursor: not-allowed;
+}
+

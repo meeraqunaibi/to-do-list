@@ -1,13 +1,13 @@
 import React from 'react';
-import './header.css';
-import { Link, useLocation } from 'react-router-dom';
+import './header.css'
+import { useLocation ,Link } from 'react-router-dom';
+
 
 const Header = () => {
-  const location = useLocation();
-  
+    const location =useLocation();
   return (
-    <div className="header">
-      <h1>R ToDo App</h1>
+    <div className='container'>
+       <h1>TO Do-APP</h1>
       <nav>
         <Link
           className={location.pathname === '/add' ? 'active' : ''}
@@ -22,8 +22,10 @@ const Header = () => {
           View Items
         </Link>
       </nav>
+
+
     </div>
   )
 }
 
-export default Header
+export default Header;
