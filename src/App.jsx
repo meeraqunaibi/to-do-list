@@ -1,71 +1,76 @@
-import { useEffect, useState } from 'react';
-import './App.css';
+import "./App.css";
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Header from './components/header/header.component';
-import AddItemPage from './pages/add-item/add-item.page';
-import ViewItemsPage from './pages/view-items/view-items.page';
-import NotFound from './pages/not-found/not-found.component';
-
-const ReadItems = () => JSON.parse(localStorage.getItem('todoList') || '[]');
+// Importing Components
+import React, { useState, useEffect } from "react";
+import Form from "./components/Form";
+import TodoList from "./components/TodoList";
 
 function App() {
-  const [items, setItems] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [inputText, setInputText] = useState("");
+  const [todos, setTodos] = useState([]);
+  const [status, setStatus] = useState("All");
+  const [filteredTodos, setFilteredTodos] = useState([]);
 
   useEffect(() => {
-    setLoading(true);
-    console.log("Fetching Items...");
-
-    setTimeout(() => {
-      const items = ReadItems();
-      setItems(items);
-      setLoading(false);
-    }, 1000);
-
+    getLocalTodos();
   }, []);
 
   useEffect(() => {
-    if (items !== null) {
-      console.log("Items has changed!");
-      localStorage.setItem('todoList', JSON.stringify(items));
+    filterHandler();
+    saveLocalTodos();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [todos, status]);
+
+  const filterHandler = () => {
+    switch (status) {
+      case "completed":
+        setFilteredTodos(todos.filter((todo) => todo.completed === true));
+        break;
+
+      case "uncompleted":
+        setFilteredTodos(todos.filter((todo) => todo.completed === false));
+        break;
+
+      default:
+        setFilteredTodos(todos);
+        break;
     }
-  }, [items]);
+  };
 
-  const addItem = (item) => {
-    setItems([...items, item]);
-  }
+  const saveLocalTodos = () => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  };
 
-  const deleteItem = (id) => {
-    setItems(items?.filter(item => item.id !== id));
-  }
-
-  const finishItem = (id) => {
-    setItems(items?.map(item => item.id === id ? { ...item, isDone: true } : item));
-  }
+  // Saving in LocalStorage
+  const getLocalTodos = () => {
+    if (localStorage.getItem("todos") === null) {
+      localStorage.setItem("todos", JSON.stringify([]));
+    } else {
+      let localTodos = JSON.parse(localStorage.getItem("todos"));
+      setTodos(localTodos);
+    }
+  };
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <Header />
-        <div className="container">
-          <Routes>
-            <Route path="/add" element={<AddItemPage addItem={addItem} />} />
-            <Route
-              path="/view"
-              element={
-                <ViewItemsPage
-                  items={items || []}
-                  deleteItem={deleteItem}
-                  finishItem={finishItem}
-                  loading={loading}
-                />}
-            />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </div>
-      </BrowserRouter>
-    </div >
+      <header>
+        <h1>To-Do List</h1>
+      </header>
+
+      <Form
+        todos={todos}
+        setTodos={setTodos}
+        inputText={inputText}
+        setInputText={setInputText}
+        setStatus={setStatus}
+      />
+
+      <TodoList
+        filteredTodos={filteredTodos}
+        todos={todos}
+        setTodos={setTodos}
+      />
+    </div>
   );
 }
 
