@@ -1,11 +1,30 @@
 .App {
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  justify-content: center;
+
+}
+.App > .header{
+  border: 3px solid;
+  border-radius: 3px;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  width:197vmin;
+  display: flex;
+  background-color: rgb(103, 220, 255);
+  text-shadow: 80px;
+}
+.App > .form{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  width:140vmin;
+  height:10vmin;
+  margin-bottom: 3vmin;
 }
 
-.container {
-  width: 70vw;
-}
+
+

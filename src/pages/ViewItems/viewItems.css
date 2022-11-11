@@ -1,0 +1,14 @@
+.view {
+  margin-top: 20px;
+}
+
+.view h1 {
+  font-size: 20px;
+}
+.h{
+  background-color: #e5e6a9;
+  border-radius: 10px;
+  width: 50vmin;
+  height: 10vmin;
+  padding: 10px;
+}
