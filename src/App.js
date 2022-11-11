@@ -1,15 +1,31 @@
-import { useState } from 'react';
+import { useState ,useEffect} from 'react';
 import './App.css';
 import Condelet from './componants/condelet';
 import Header from './componants/header';
 import Addpage from './componants/pages/Addpage';
 import View from './componants/pages/View';
-
+import {BrowserRouter,Routes,Route}from 'react-router-dom'
+import Notfound from './componants/pages/Notfound';
 function App() {
-  const [items, setItem] = useState(JSON.parse(localStorage.getItem('todolist')) || [])
+  const [items, setItem] = useState('')
   const [idtodel, setidtodel] = useState('')
   const [isopen, setisopen] = useState(false)
-  const [curent, setcurent] = useState(items.length?'view':'add')
+  const [loading, setloading] = useState(false)
+
+ useEffect(() => {
+setloading(true)
+  setTimeout(()=>{
+    const  items=JSON.parse(localStorage.getItem('todolist')) || [];
+    setItem(items)
+    setloading(false)
+  },2000)
+  
+   
+  
+ }, [])
+ 
+
+
 
   const handleadd = (item) => {
     const newitems = [...items, item]
@@ -42,13 +58,29 @@ function App() {
 
   }
   return (
-
-
-
     <div className="App" >
-      <Header setcurent={setcurent} curent={curent} />
+<BrowserRouter>
+<Header />
+<Routes>
+  <Route path='/add' element={<Addpage add={handleadd} />} />
+ 
+  <Route path='/view'  element={<View
+        items={items}
+        onDelet={handelDelet}
+        Done={handelDone}
+        pophandel={handlepopup}
+        loading={loading}
+
+      />}/>
+      <Route path='*' element={<Notfound />} />
+
+</Routes>
+</BrowserRouter>
+
+   
+    
       
-      
+{/*       
       {curent === 'add' && <Addpage add={handleadd} />}
 
       {curent === 'view' && <View
@@ -56,8 +88,9 @@ function App() {
         onDelet={handelDelet}
         Done={handelDone}
         pophandel={handlepopup}
+        loading={loading}
 
-      />}
+      />} */}
 
       {isopen ? <Condelet delet={handelDelet}
         close={setisopen}

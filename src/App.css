@@ -176,15 +176,16 @@ nav{
   justify-content: space-around;
   align-items: center;
 }
-nav button{
+nav  a{
   width: 40%;
   height: 60%;
   border: none;
   border-radius: 5px;
   font-weight: 700;
   background-color: #FBF2CF;
+  text-decoration: none;
 
 }
-nav button.active{
+nav a.active{
   background-color: #b377de;
 }
