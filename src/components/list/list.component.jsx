@@ -1,26 +1,24 @@
-import './list.css';
+import CATIGORY_OPTION from '../../constants/data';
+import './list.css'
+import deleteIcon from '../../assets/delete.png';
+import Item from './item.component';
 
-/** 
- * @param {{
- * items: {
- *   title: event.target.title.value,
- *   category: event.target.category.value,
- *   urgent: event.target.urgent.checked
- * }[]
- * }} props
- */
 const List = (props) => {
-  return (
-    <div className='items-list'>
-      <ul>
-        {
-          props.items.map((item, index) => <li key={index}>
-            {item.title} - {item.category} - {item.urgent ? 'URGENT' : 'non urgent'}
-          </li>)
-        }
-      </ul>
-    </div>
-  )
-};
+    return (
+        <div className='list'>
+            Items Of List
+            <ul>
+                {
+                    props.items.map(item => (
+                        <Item key={item.id} item={item}
+                            onDelete={props.onDelete}
+                            onFinish={props.onFinish} />
+                    )
+                    )}
+            </ul>
 
-export default List;
+        </div>
+
+    );
+}
+export default List

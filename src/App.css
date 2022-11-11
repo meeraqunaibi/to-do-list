@@ -1,3 +1,52 @@
 .App {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.modal,
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.overlay {
+  background: rgba(106, 56, 56, 0.8);
+}
+
+.modal-content {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: #f1f1f1;
+  padding: 14px 28px;
+  border-radius: 3px;
+  max-width: 600px;
+  min-width: 300px;
+}
+
+.bu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 10vw;
+  margin-top: 15px;
+}
+
+.bu button {
+  background-color: rgb(210, 237, 199);
+  padding: 10px 15px;
+  border: 1px solid rgba(106, 56, 56, 0.8);
+  border-radius: 10px;
+  cursor: pointer;
 }
