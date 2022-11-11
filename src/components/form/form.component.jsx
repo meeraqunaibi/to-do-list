@@ -1,65 +1,67 @@
 import { useState } from 'react';
-import './form.css'
+import CATIGORY_OPTION from '../../constants/data';
+import './form.css';
 const Form = (props) => {
-  const [title, setTitle] = useState('Go Swim');
-  const [category, setCategory] = useState('');
-  const [isUrgent, setIsUrgent] = useState(false);
+    const [title, settitle] = useState('go');
+    const [category, setcategory] = useState('');
+    const [isurgent, setisurgent] = useState(false);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const newItem = {
-      title: event.target.title.value,
-      category: event.target.category.value,
-      urgent: event.target.urgent.checked
+
+
+    const handlesubmit = (event) => {
+        event.preventDefault();
+        const newitem = {
+            id: new Date(),
+            isDone: false,
+            title: title,
+            category: event.target.category.value,
+            urgent: event.target.urgent.checked
+
+        }
+
+
+        if (newitem.category === "") {
+            alert("You must select a category!");
+            return;
+        }
+        ///
+        props.onAddItem(newitem);
+        settitle("");
+        setcategory("");
+        setisurgent(false);
     }
 
-    props.onAddItem(newItem);
+    const handletitlechange = (event) => {
+        let title = event.target.value;
+        title = title.replace('.', '-');
+        title = title.replace('*', '-');
+        settitle(title);
 
-    setTitle("");
-    setCategory("");
-    setIsUrgent(false);
-  }
+    }
 
-  const onTitleChange = (event) => {
-    let title = event.target.value;
-    title = title.replace(".", " ");
-    title = title.replace("-", " ");
-    setTitle(title);
-  }
 
-  return (
-    <div className="form">
-      <form onSubmit={handleSubmit}>
-        <input
-          placeholder="Title"
-          name="title"
-          type="text"
-          value={title}
-          onChange={onTitleChange}
-        />
-        <select
-          name="category"
-          placeholder="Category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        >
-          <option value="" disabled>Select</option>
-          <option value="work">Work</option>
-          <option value="home">Home</option>
-          <option value="personal">Personal</option>
-        </select>
-        <input
-          name="urgent"
-          type="checkbox"
-          checked={isUrgent}
-          onChange={(e) => setIsUrgent(e.target.checked)}
-        />
-        <label>Urgent</label>
-        <div className="separator" />
-        <input type="submit" value="Add to List" />
-      </form>
-    </div>
-  )
-};
+    return (
+        <div className='form'>
+            <form onSubmit={handlesubmit}>
+                <input type="text" placeholder='title' value={title} onChange={handletitlechange} required />
+                <select name="category" placeholder='category' value={category} onChange={(e) => setcategory(e.target.value)}>
 
-export default Form;
+                    <option value="" disabled>Select</option>
+                    {
+                        CATIGORY_OPTION.map(item => (
+                            <option value={item.value} key={item.value}> {item.label}</option>
+
+                        ))
+                    }
+
+                </select>
+                <input type="checkbox" name='urgent' checked={isurgent} onChange={(e) => setisurgent(e.target.checked)} />
+                <label >urgent</label>
+                <div className='separator'></div>
+                <input type="submit" value='addtolist' />
+            </form>
+
+        </div>);
+
+}
+export default Form
