@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   padding: 0 calc((100% - 70vw) / 2);
-  background-color: #3498DB;
+  background-color: #e26fcf;
   box-sizing: border-box;
   align-items: center;
 }
@@ -17,7 +17,7 @@
   text-transform: uppercase;
 }
 
-.header nav button {
+.header nav a {
   background: none;
   border: none;
   font-size: 16px;
@@ -30,14 +30,14 @@
   border-radius: 5px;
 }
 git 
-.header nav button.active {
+.header nav a.active {
   background-color: #d148a3;
 }
 
-.header nav button:hover {
+.header nav a:hover {
   text-shadow: 1px 1px #aaa;
 }
 
-.header nav button:active {
+.header nav a:active {
   color: #333;
 }

@@ -1,23 +1,26 @@
 import React from 'react';
-import './header.css'
+import { useLocation } from 'react-router-dom';
+import './header.css';
+import { Link } from 'react-router-dom';
 
-const Header = (props) => {
+const Header = () => {
+  const location=useLocation();
   return (
     <div className="header">
-      <h1>R ToDo App</h1>
+      <h1>To Do App</h1>
       <nav>
-        <button
-          className={props.currentPage === 'add' ? 'active' : ''}
-          onClick={() => props.setCurrentPage('add')}
+        <Link
+          className={location.pathname === 'add' ? 'active' : ''}
+          to="/add"
         >
           Add Item
-        </button>
-        <button
-          className={props.currentPage === 'view' ? 'active' : ''}
-          onClick={() => props.setCurrentPage('view')}
+        </Link>
+        <Link
+          className={location.pathname.includes('view') ? 'active' : ''}
+          to="/view"
         >
           View Items
-        </button>
+        </Link>
       </nav>
     </div>
   )
