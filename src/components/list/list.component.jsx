@@ -12,6 +12,12 @@ import 'react-bootstrap-icons';
  * }} props
  */
 const List = (props) => {
+   const del = () => {
+      // props.onDelete(props.items.title);
+      console.log("this is test");
+      // <Popup/>
+   
+   }
    return (
       <div >
          <ul className='List'>
@@ -19,8 +25,7 @@ const List = (props) => {
                props.items.map((item, index) => <li className={item.urgent ? "urgent" : "" || item.isDone ? "Done" : ""} key={index}>
                   {item.title} - {item.category}
                   <div className='btn-group '>
-                     <button onClick={() =>
-                        props.onDelete(item.id)}
+                     <button onClick={del}
                         className="btn btn-warning btn-sm"
                      >
                         Delete
