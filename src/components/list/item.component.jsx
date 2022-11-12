@@ -10,7 +10,7 @@ const Item = (props) => {
                         </span>
                     </div>
                     <div className="action">
-                        <button onClick={() => props.onDelete(item.id)}>
+                        <button onClick={() => props.onDelete=(item.id)}>
                             <img src="delete.png" alt="" width={20} />
                         </button>
                         <button onClick={() => props.onFinish(item.id)} disabled={item.isDone}>
