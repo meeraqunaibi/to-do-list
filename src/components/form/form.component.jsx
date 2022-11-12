@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import './form.css'
 import CATEGORIES_OPTIONS from '../../constants/data';
+import { useNavigate } from 'react-router-dom';
 
 const Form = (props) => {
   const [title, setTitle] = useState('Go Swim');
   const [category, setCategory] = useState('');
   const [isUrgent, setIsUrgent] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -27,6 +29,8 @@ const Form = (props) => {
     setTitle("");
     setCategory("");
     setIsUrgent(false);
+
+    navigate({ pathname: '/view' });
   }
 
   const onTitleChange = (event) => {
