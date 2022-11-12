@@ -25,7 +25,6 @@ const Form = (props) => {
     };
     console.log(newItem);
     props.onAddItem(newItem);
-    // e.preventDefualt();
   }
 
   return (
