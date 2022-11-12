@@ -39,7 +39,7 @@ const List = (props) => {
   return (
 
     <div className='items-list'>
-      <div id="id01" className={isVisible ? "modal visibleDialog" : "w3-modal invisibleDialog"}>
+      <div id="id01" className={isVisible ? "modal visibleDialog" : "modal invisibleDialog"}>
         <div className="modal-content">
           <div className="container">
             <span className="w3-button w3-display-topright">&times;</span>

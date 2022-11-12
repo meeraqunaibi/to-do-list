@@ -50,8 +50,8 @@ const Form = (props) => {
         >
           <option value="" disabled>Select</option>
           {
-            items.map((item) => (
-              <option value={item.value} > {item.label} </option>
+            items.map((item, index) => (
+              <option key={index} value={item.value} > {item.label} </option>
             ))
           }
         </select>
