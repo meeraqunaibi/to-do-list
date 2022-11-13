@@ -1,13 +1,9 @@
-import { Link,useLocation,useNavigate } from "react-router-dom";
+import { Link,useLocation } from "react-router-dom";
 
 import "./header.css";
 
 const Header = (props) => {
-  const navegate = useNavigate();
 
-  const handleNav = () => {
-    navegate({ pathname: "/feed" });
-  };
 
   const Location=useLocation();
   return (
