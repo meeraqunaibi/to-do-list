@@ -6,7 +6,7 @@ import NotFoundPage from "./pages/pages/notfound/notfound";
 import LIstViewPage from "./pages/pages/listviewpage/listview.page";
 import PopUp from "./components/popup.componant/popup ,componant";
 import Header from "./components/header/header";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
   const [items, setItems] = useState(
@@ -77,17 +77,23 @@ function App() {
     <div className="App">
       {localStorage.setItem("ToDoTtems", JSON.stringify(items))}
       <BrowserRouter>
-      <Header />
-      {/* changepage={changepage} page={currentpage} /> */}
+        <Header />
+        {/* changepage={changepage} page={currentpage} /> */}
 
-      <div className="appbody">
-        {/* <Form addItem={addItem} />
+        <div className="appbody">
+          {/* <Form addItem={addItem} />
         <br/>
         <hr/>
         <List items={items} ondelete={deletefun} /> */}
 
-       
           <Routes>
+            {console.log(items.length===0 )}
+            {items.length === 0 ? (
+              <Route path="/" element={<Navigate to="/add" />} />
+            ) : (
+              <Route path="/" element={<Navigate to="/view" />} />
+             
+            )}
             <Route path="/add" element={<FormPage addItem={addItem} />} />
             <Route
               path="/view"
@@ -99,27 +105,26 @@ function App() {
                 />
               }
             />
-            <Route path="*" element={<NotFoundPage/>}/>
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
-       
 
-        {/* ///////////////////////////////// */}
+          {/* ///////////////////////////////// */}
 
-        {/* {currentpage === "form" && <FormPage addItem={addItem} />}
+          {/* {currentpage === "form" && <FormPage addItem={addItem} />}
         {currentpage === "listview" && (
           <LIstViewPage items={items} ondelete={deletefun} done={donefun} />
         )} */}
 
-        {console.log(deleteornot, popup)}
+          {console.log(deleteornot, popup)}
 
-        {popup && (
-          <PopUp
-            className="popup"
-            handleClose={handleClose}
-            handledelete={handledelete}
-          />
-        )}
-      </div>
+          {popup && (
+            <PopUp
+              className="popup"
+              handleClose={handleClose}
+              handledelete={handledelete}
+            />
+          )}
+        </div>
       </BrowserRouter>
     </div>
   );

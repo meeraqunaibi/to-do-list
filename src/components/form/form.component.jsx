@@ -1,11 +1,19 @@
 import { useState } from "react";
+import { useNavigate} from "react-router-dom";
 
 import Catergories from "../../data/data";
 import "./form.css";
 const Form = (props) => {
+  
   const [title, changetitle] = useState("Run");
   const [category, changecategory] = useState("");
   const [urgent, changeUrgent] = useState(false);
+
+  const navegate = useNavigate();
+
+  const handleNav = () => {
+    navegate({ pathname: "/view" });
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -27,6 +35,7 @@ const Form = (props) => {
     changetitle("");
     changecategory("");
     changeUrgent(false);
+    handleNav();
   };
 
   const handletilte = (event) => {
