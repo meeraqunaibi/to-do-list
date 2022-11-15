@@ -2,11 +2,11 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import Form from './components/Forms/form.components';
 import List from './components/list/list.components'
-import AddItem from './Pages/AddItem/AddItem';
-import ViewItem from './Pages/ViewItem/ViewItem';
-import Header from './components/Header/Header';
+import AddItem from './pages/AddItem/AddItem';
+import ViewItem from './pages/ViewItems/ViewItems';
+import Header from './components/header/Header';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Notfound from './Pages/notFound/notFound.components';
+import Notfound from './pages/notFound/notFound.components';
 
 function App() {
 
@@ -78,17 +78,16 @@ sortFunction(newItems);
       <BrowserRouter>
       <Header  />
       <Routes>
-        <Route path='/view' element={<ViewItem items={items}             loading={loading}
+      <Route path='view' element={<ViewItem items={items}             loading={loading}
 
  
 deleteItem={deleteItem} finishItem={finishItem} />} >
 
         </Route>
-        <Route path='/add' element={ <AddItem addItem={addItem} />}></Route>
+        <Route path='add' element={<AddItem addItem={addItem} />}></Route>
         <Route path='*' element={<Notfound />}></Route>
-
-      </Routes>
-      </BrowserRouter>
+        </Routes>
+        </BrowserRouter>
 
       {/* <div>
         <button  onClick={()=>setCurrentPage('add')}>Add Item</button>

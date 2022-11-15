@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import List from '../../components/list/list.components';
-import './viewItem.css'
+import './viewItems.css'
 import loadIcon from '../../Assets/load.png';
 
 const ViewItem = (props) => {
