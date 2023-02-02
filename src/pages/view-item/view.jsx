@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import List from "../../components/list/list.component";
 import './view-item.css'
 import loadingImg from '../../assets/loading.gif';
-import Dialog from '/Users/manalamro/Desktop/rectoo/react-todo-app/src/components/Dialog/dialog.jsx'
+import Dialog from '/Users/manalamro/Desktop/rectoo/react-todo-app-need some edit/src/components/Dialog/dialog.jsx'
 
 const View = (props) => {
   const [time, setTime] = useState(new Date());

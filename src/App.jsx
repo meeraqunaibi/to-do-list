@@ -3,12 +3,10 @@ import './App.css';
 import Add from './pages/add-item/add-item.page'
 import View from './pages/view-item/view'
 import Header from './components/header/header.component';
-import Dialog from './components/Dialog/dialog';
 import NotFound from './pages/not-found'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 const ReadItems = () =>
-  JSON.parse(localStorage.getItem('todoList') || []);
-console.log(ReadItems());
+JSON.parse(localStorage.getItem('todoList') || '[]');
 
 function App() {
   //You can put all product information into diaglog
