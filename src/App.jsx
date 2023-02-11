@@ -1,25 +1,28 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
 import "./App.css";
 import Header from "./components/header/header.component";
 import AddItem from "./pages/addItem/addItem.component";
 import ViewItems from "./pages/viewItems/viewItem.component";
 
 function App() {
+  const navigate = useNavigate();
   const [items, setItems] = useState(
     JSON.parse(localStorage.getItem("to-do-list")) || []
   );
   const [isShown, setIsShown] = useState(false);
   const [id, setId] = useState();
-  // const [loading, setLoading] = useState(false);
-  // useEffect(()=>{
-
-  // }, [])
 
   const addNewItem = (item) => {
     let newItems = [...items, item].sort((a, b) => a.isDone - b.isDone);
     setItems(newItems);
     localStorage.setItem("to-do-list", JSON.stringify(newItems));
+    navigate({ pathname: "/view" });
   };
   const onDelete = (id) => {
     const newItems = items.filter((item) => item.id !== id);
@@ -45,7 +48,6 @@ function App() {
   };
   return (
     <div className="App">
-      <BrowserRouter>
         <Header />
         <Routes>
           <Route
@@ -67,7 +69,6 @@ function App() {
             }
           ></Route>
         </Routes>
-      </BrowserRouter>
     </div>
   );
 }
